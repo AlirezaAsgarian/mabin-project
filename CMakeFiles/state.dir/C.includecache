@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/home/alireza/state.io/src/bazi1.c
+
 /home/alireza/state.io/src/main.c
 stdio.h
 -
@@ -28,6 +30,8 @@ time.h
 /home/alireza/state.io/src/mouse settings.c
 -
 /home/alireza/state.io/src/naghshe11.c
+-
+/home/alireza/state.io/src/bazi1.c
 -
 /home/alireza/state.io/src/select_naghse.c
 -

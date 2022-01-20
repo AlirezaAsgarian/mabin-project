@@ -1,6 +1,6 @@
 
 
-        //SDL_RenderCopy(renderer1,tex,NULL,&dis);
+        SDL_RenderCopy(renderer1,tex,NULL,&dis);
         SDL_RenderCopy(renderer1,te1,NULL,&t11);
         SDL_RenderCopy(renderer1,te2,NULL,&t12);
         SDL_RenderCopy(renderer1,te3,NULL,&t13);

@@ -87,9 +87,9 @@
            SDL_RenderCopy(renderer1,*(buT+3),NULL,&b4r);
           SDL_RenderPresent(renderer1);
         for(int i=0;i<4;++i)
-     {
+       {
     SDL_DestroyTexture(*(buT+i));
     SDL_DestroyTexture(*(whichn+i));
-     }
-     //akjljoaiaijf 
+        }
+    
      

@@ -7,7 +7,7 @@
 #include <SDL2/SDL_ttf.h>
 #include<stdlib.h>
 #include<time.h>
-enum window{menu,select_naghse,tasadof,bazi};
+enum window{menu,select_naghse,tasadof,bazi1,bazi2,bazi3,bazi4};
 int cmp(const void *a,const void *b)
 {
 
@@ -93,9 +93,13 @@ int iswindow= select_naghse+8;
         }
         SDL_RenderPresent(renderer1);
         }
+       else if(iswindow == bazi1+20)
+        {
+          #include</home/alireza/state.io/src/bazi1.c>
+        }
         else if(iswindow == select_naghse+8)
         {
-            #include</home/alireza/state.io/src/select_naghse.c>  
+            #include</home/alireza/state.io/src/select_naghse.c>
         }
         else 
         {
