@@ -1,7 +1,7 @@
 
 
-        SDL_RenderCopy(renderer1,tex,NULL,&dis);
-        SDL_RenderCopy(renderer1,te1,NULL,&t11);
+        //SDL_RenderCopy(renderer1,tex,NULL,&dis);
+       /* SDL_RenderCopy(renderer1,te1,NULL,&t11);
         SDL_RenderCopy(renderer1,te2,NULL,&t12);
         SDL_RenderCopy(renderer1,te3,NULL,&t13);
         SDL_RenderCopy(renderer1,te4,NULL,&t14);
@@ -27,6 +27,6 @@
         SDL_RenderCopy(renderer1,te24,NULL,&t124);
         SDL_RenderCopy(renderer1,te25,NULL,&t125);
         SDL_RenderCopy(renderer1,te26,NULL,&t126);
-        SDL_RenderCopy(renderer1,te27,NULL,&t127);
+        SDL_RenderCopy(renderer1,te27,NULL,&t127);*/
         
         

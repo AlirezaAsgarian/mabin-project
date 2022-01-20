@@ -28,7 +28,34 @@
     SDL_Surface *t25x = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 25/white2.png");
     SDL_Surface *t26x = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 26/white2.png");
     SDL_Surface *t27x = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 27/white2.png");
-    SDL_Surface *images[]={t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11x,t12x,t13x,t14x,t15x,t16x,t17x,t18x,t19x,t20x,t21x,t22x,t23x,t24x,t25x,t26x,t27x};
+    SDL_Surface **images =(SDL_Surface **)malloc(28*sizeof(SDL_Surface*));
+            *(images)=t1;
+            *(images+1)=t2;
+            *(images+2)=t3;
+            *(images+3)=t4;
+            *(images+4)=t5;
+            *(images+5)=t6;
+            *(images+6)=t7;
+            *(images+7)=t8;
+            *(images+8)=t9;
+            *(images+9)=t10;
+            *(images+10)=t11x;
+            *(images+11)=t12x;
+            *(images+12)=t13x;
+            *(images+13)=t14x;
+            *(images+14)=t15x;
+            *(images+15)=t16x;
+            *(images+16)=t17x;
+            *(images+17)=t18x;
+            *(images+18)=t19x;
+            *(images+19)=t20x;
+            *(images+20)=t21x;
+            *(images+21)=t22x;
+            *(images+22)=t23x;
+            *(images+23)=t24x;
+            *(images+24)=t25x;
+            *(images+25)=t26x;
+            *(images+26)=t27x;
         SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer1,image);
         SDL_Texture *te1 = SDL_CreateTextureFromSurface(renderer1,t1);
         SDL_Texture *te2 = SDL_CreateTextureFromSurface(renderer1,t2);
@@ -63,7 +90,7 @@
        int x=rand()%28;
        printf("x=%d\n",x);
              *(distinct+i) = (SDL_Texture *)malloc(sizeof(SDL_Texture*));
-             *(distinct+i)= SDL_CreateTextureFromSurface(renderer1,images[x]);
+             *(distinct+i)= SDL_CreateTextureFromSurface(renderer1,*(images+x));
              if(*(distinct+i) == NULL){printf("can't %s",SDL_GetError());}
      }
         
@@ -116,42 +143,15 @@
         t17.x = 219*ratio/10+biajolo; t17.y=46*ratio/10-biabala; t17.w=140*ratio/10; t17.h=106*ratio/10;
         SDL_Rect t18;
         t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;
-        SDL_Rect t19;
-        t19.x = 295; t19.y=187; t19.w=166; t19.h=183;
-        SDL_Rect t110;
-        t110.x = 240; t110.y=354; t110.w=190; t110.h=170;
-        SDL_Rect t111;
-        t111.x = 354; t111.y=275.5; t111.w=133; t111.h=246;
-        SDL_Rect t112;
-        t112.x = 329; t112.y=70; t112.w=151; t112.h=131;
-        SDL_Rect t113;
-        t113.x = 444; t113.y=54; t113.w=136; t113.h=180;
-        SDL_Rect t114;
-        t114.x = 440; t114.y=175; t114.w=177; t114.h=179;
-        SDL_Rect t115;
-        t115.x = 461; t115.y=329; t115.w=183; t115.h=163;
+        
         SDL_Rect t116;
-        t116.x = 547; t116.y=39; t116.w=136; t116.h=148;
-        SDL_Rect t117;
-        t117.x = 587; t117.y=154; t117.w=210; t117.h=126;
-        SDL_Rect t118;
-        t118.x = 603; t118.y=254; t118.w=216; t118.h=128;
+        
         SDL_Rect t119;
         t119.x = 616; t119.y=336; t119.w=255; t119.h=103;
         SDL_Rect t120;
         t120.x = 627; t120.y=410; t120.w=141; t120.h=93;
         SDL_Rect t121;
         t121.x = 751; t121.y=407; t121.w=122; t121.h=97;
-        SDL_Rect t122;
-        t122.x = 660; t122.y=47; t122.w=197; t122.h=115;
-        SDL_Rect t123;
-        t123.x = 818; t123.y=33; t123.w=94; t123.h=108;
-        SDL_Rect t124;
-        t124.x = 779; t124.y=140; t124.w=187; t124.h=103;
-        SDL_Rect t125;
-        t125.x = 747; t125.y=213; t125.w=275; t125.h=182;
-        SDL_Rect t126;
-        t126.x = 867; t126.y=20; t126.w=119; t126.h=166;
-        SDL_Rect t127;
-        t127.x = 958; t127.y=102; t127.w=103; t127.h=173;
+        
+       
         

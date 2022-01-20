@@ -6,15 +6,16 @@ if(xm>211 && xm<258 && ym>264 && ym<310)
         {
          iswindow = bazi1+20;                   
         } 
-}
-        /*else if(xm>499 && xm<546 && ym>200 && ym<268)
+
+        else if(xm>499 && xm<546 && ym>200 && ym<268)
         {
-            
+            iswindow = bazi2 + 20;
         }              
         else if(xm>852 && xm<902 && ym>288 && ym<338)
         {
 
-
+           
+           iswindow = bazi3+20;
         
 
 
@@ -25,8 +26,8 @@ if(xm>211 && xm<258 && ym>264 && ym<310)
 
           
 
-          }*/
-
+          }
+}
         /*  else 
           {
          
