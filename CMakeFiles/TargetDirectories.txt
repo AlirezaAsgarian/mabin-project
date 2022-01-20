@@ -1,0 +1,3 @@
+/home/alireza/state.io/CMakeFiles/edit_cache.dir
+/home/alireza/state.io/CMakeFiles/rebuild_cache.dir
+/home/alireza/state.io/CMakeFiles/state.dir
