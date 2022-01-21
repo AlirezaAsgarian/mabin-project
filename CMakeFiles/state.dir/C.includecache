@@ -12,6 +12,8 @@
 
 /home/alireza/state.io/src/bazi3.c
 
+/home/alireza/state.io/src/bazi4.c
+
 /home/alireza/state.io/src/main.c
 stdio.h
 -
@@ -40,6 +42,8 @@ time.h
 /home/alireza/state.io/src/bazi2.c
 -
 /home/alireza/state.io/src/bazi3.c
+-
+/home/alireza/state.io/src/bazi4.c
 -
 /home/alireza/state.io/src/select_naghse.c
 -

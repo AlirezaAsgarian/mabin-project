@@ -105,6 +105,10 @@ int iswindow= select_naghse+8;
         {
           #include</home/alireza/state.io/src/bazi3.c>
         }
+        else if(iswindow == bazi4+20)
+        {
+          #include</home/alireza/state.io/src/bazi4.c>
+        }
         else if(iswindow == select_naghse+8)
         {
             #include</home/alireza/state.io/src/select_naghse.c>

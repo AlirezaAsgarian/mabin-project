@@ -1,6 +1,6 @@
-int ratio=10;
-int biajolo=0;
-int biabala=0;
+int ratio=14;
+int biajolo=-585;
+int biabala=5;
 
 
 

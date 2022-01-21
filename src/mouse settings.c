@@ -14,17 +14,14 @@ if(xm>211 && xm<258 && ym>264 && ym<310)
         else if(xm>852 && xm<902 && ym>288 && ym<338)
         {
 
-           
            iswindow = bazi3+20;
-        
-
 
         }
 
           else if(xm>541 && xm<591 && ym>431 && ym<481)
           {
 
-          
+          iswindow = bazi4+20;
 
           }
 }
