@@ -250,6 +250,8 @@
         SDL_Texture *te27 = SDL_CreateTextureFromSurface(renderer1,t27x);
         SDL_Texture *Tr1r = SDL_CreateTextureFromSurface(renderer1,r1r);
         SDL_Texture *Tr1b = SDL_CreateTextureFromSurface(renderer1,r1b);
+        SDL_Texture **armsT =(SDL_Texture **)malloc(10*sizeof(SDL_Texture*));
+        *(armsT)=NULL; *(armsT+1)=Tr1r; *(armsT+2)=Tr1b;
         SDL_Texture **distinct =(SDL_Texture **)malloc(10*sizeof(SDL_Texture*));
         SDL_Texture **imagess =(SDL_Texture **)malloc(108*sizeof(SDL_Texture*));
         for(int i=0;i<108;++i)
