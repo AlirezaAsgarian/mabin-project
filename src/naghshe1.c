@@ -1,5 +1,7 @@
 
 
+   int is_destination=0;
+   int location=0;
     SDL_Surface *image = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/nagshe2.png");
     SDL_Surface *t1 = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 1/white2.png");
     SDL_Surface *t2 = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 2/white2.png");
@@ -328,11 +330,18 @@
             SDL_Rect position;
             SDL_Texture *armt;
         };
+        struct  Sarbaz
+        {
+            SDL_Rect position;
+            int tedadeshun;
+            SDL_Texture *tedad;
+        };
         struct paigah{
         SDL_Rect position;
         int user;
         SDL_Texture *color;
         struct Arm *arm;
+        struct Sarbaz *sarbaz;
         };
         struct paigah* paigah=( struct paigah*)malloc(sizeof(struct paigah)*8);
         int ratio=13;
@@ -341,53 +350,127 @@
         int biabala=30;
      
         SDL_Rect *arms=(SDL_Rect *)malloc(sizeof(SDL_Rect)*8);
+        SDL_Rect *counter=(SDL_Rect *)malloc(sizeof(SDL_Rect)*8);
         SDL_Rect t11;
         t11.x = 72.5*ratio/10+biajolo; t11.y=36*ratio/10-biabala; t11.w=111*ratio/10; t11.h=69*ratio/10;
         SDL_Rect r11;
         r11.x = 72.5*ratio/10+biajolo+41; r11.y=36*ratio/10-biabala+4; r11.w=34; r11.h=41;
         *(arms)=r11;
+        SDL_Rect c11;
+        c11.x = 72.5*ratio/10+biajolo+41; c11.y=36*ratio/10-biabala+4+45; c11.w=32; c11.h=29;
+        *(counter)=c11;
         SDL_Rect t12;
         t12.x = 57*ratio/10+biajolo-1; t12.y=96*ratio/10-biabala-1; t12.w=130*ratio/10; t12.h=94*ratio/10;
         SDL_Rect r12;
         r12.x = 57*ratio/10+biajolo-1+76; r12.y=96*ratio/10-biabala+12; r12.w=34; r12.h=41;
         *(arms+1)=r12;
+        SDL_Rect c12;   
+        c12.x = 57*ratio/10+biajolo-1+76; c12.y=96*ratio/10-biabala+12+45; c12.w=32; c12.h=29;    
+       *(counter+1)=c12;
         SDL_Rect t13;
         t13.x = 54*ratio/10+biajolo; t13.y=165*ratio/10-biabala; t13.w=139*ratio/10; t13.h=238*ratio/10;
         SDL_Rect r13;
         r13.x = 54*ratio/10+biajolo+49; r13.y=165*ratio/10-biabala+64; r13.w=34; r13.h=41;
         *(arms+2)=r13;
+        SDL_Rect c13;
+        c13.x = 54*ratio/10+biajolo+49; c13.y=165*ratio/10-biabala+64+45; c13.w=32; c13.h=29;
+        *(counter+2)=c13;
         SDL_Rect t14;
         t14.x = 175*ratio/10+biajolo; t14.y=31*ratio/10-biabala; t14.w=87*ratio/10; t14.h=152*ratio/10;
         SDL_Rect r14;
         r14.x = 175*ratio/10+biajolo+10; r14.y=31*ratio/10-biabala+73; r14.w=34; r14.h=41;
         *(arms+3)=r14;
+        SDL_Rect c14;
+        c14.x = 175*ratio/10+biajolo+10; c14.y=31*ratio/10-biabala+73+45; c14.w=32; c14.h=29;
+        *(counter+3)=c14;
         SDL_Rect t15;
         t15.x = 156*ratio/10+biajolo; t15.y=175*ratio/10-biabala; t15.w=94*ratio/10; t15.h=155*ratio/10;
         SDL_Rect r15;
         r15.x = 156*ratio/10+biajolo+45; r15.y=175*ratio/10-biabala+34; r15.w=34; r15.h=41;
         *(arms+4)=r15;
+        SDL_Rect c15;
+        c15.x = 156*ratio/10+biajolo+45; c15.y=175*ratio/10-biabala+34+45; c15.w=32; c15.h=29;
+        *(counter+4)=c15;
         SDL_Rect t16;
         t16.x = 176*ratio/10+biajolo; t16.y=262*ratio/10-biabala; t16.w=128*ratio/10; t16.h=174*ratio/10;
         SDL_Rect r16;
         r16.x = 176*ratio/10+biajolo+58; r16.y=262*ratio/10-biabala+68; r16.w=34; r16.h=41;
         *(arms+5)=r16;
+        SDL_Rect c16;
+        c16.x = 176*ratio/10+biajolo+58; c16.y=262*ratio/10-biabala+68+45; c16.w=32; c16.h=29;
+        *(counter+5)=c16;
         SDL_Rect t17;
         t17.x = 219*ratio/10+biajolo; t17.y=46*ratio/10-biabala; t17.w=140*ratio/10; t17.h=106*ratio/10;
         SDL_Rect r17;
         r17.x = 219*ratio/10+biajolo+72; r17.y=46*ratio/10-biabala+36; r17.w=34; r17.h=41;
         *(arms+6)=r17;
+        SDL_Rect c17;
+        c17.x = 219*ratio/10+biajolo+72; c17.y=46*ratio/10-biabala+36+45; c17.w=32; c17.h=29;
+        *(counter+6)=c17;
         SDL_Rect t18;
         t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;
         SDL_Rect r18;
         r18.x = 246*ratio/10+biajolo+71; r18.y=142*ratio/10-biabala+57; r18.w=34; r18.h=41;
         *(arms+7)=r18;
+        SDL_Rect c18;
+        c18.x = 246*ratio/10+biajolo+71; c18.y=142*ratio/10-biabala+57+45; c18.w=32; c18.h=29;
+        *(counter+7)=c18;
+        
+        TTF_Font *font = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
+        if(font == NULL){printf("bia paeen saremon dard geref %s\n",TTF_GetError());}
+        for(int i=0;i<8;++i)
+        {
+        (paigah+i)->sarbaz = (struct Sarbaz*)malloc(sizeof(struct Sarbaz));
+        (paigah+i)->sarbaz->tedadeshun=50;
+        char *c=(char *)malloc(sizeof(char)*10);
+        sprintf(c,"%d",(paigah+i)->sarbaz->tedadeshun);
+        SDL_Color color = {0,255,0,255};
+        SDL_Surface *text = TTF_RenderText_Solid(font,c,color);
+       
+        (paigah+i)->sarbaz->tedad=SDL_CreateTextureFromSurface(renderer1,text);
+       
+        free(text);
+        free(c);
+        }
+        TTF_CloseFont(font);
+
         for(int i=0;i<8;++i)
         { 
                 (paigah+i)->arm = (struct Arm*)malloc(sizeof(struct Arm));
                 (paigah+i)->arm->position = *(arms+i);
+                (paigah+i)->sarbaz->position = *(counter+i);
          
-                
         }
+        void addsoldier(struct paigah* paigah1,int add,SDL_Renderer *renderer)
+        {
+        TTF_Font *font1 = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
+        (paigah1)->sarbaz->tedadeshun+=add;
+        char *c=(char *)malloc(sizeof(char)*10);
+        sprintf(c,"%d",(paigah1)->sarbaz->tedadeshun);
+        SDL_Color color = {0,255,0,255};
+        SDL_Surface *text = TTF_RenderText_Solid(font1,c,color);
+       // printf("Yes\n");
+        if(text == NULL){printf("%s\n",TTF_GetError());}
+        (paigah1)->sarbaz->tedad=SDL_CreateTextureFromSurface(renderer,text);
+        free(text); free(c); TTF_CloseFont(font1);
+        }        
+        void minussoldier(struct paigah* paigah1,int add,SDL_Renderer *renderer)
+        {
+        TTF_Font *font1 = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
+        printf("paigah=%p\n",paigah1);
+        (paigah1)->sarbaz->tedadeshun-=add;
+        printf("tedad=%d\n",(paigah1)->sarbaz->tedadeshun);
+        char *c=(char *)malloc(sizeof(char)*10);
+        sprintf(c,"%d",(paigah1)->sarbaz->tedadeshun);
+       // printf("Yes\n");
+        SDL_Color color = {0,255,0,255};
+       // printf("Yes\n");
+        SDL_Surface *text = TTF_RenderText_Solid(font1,c,color);
+       // printf("Yes\n");
+        if(text == NULL){printf("%s\n",TTF_GetError());}
+        (paigah1)->sarbaz->tedad=SDL_CreateTextureFromSurface(renderer,text);
+        free(text); free(c); TTF_CloseFont(font1);
+        }        
         
         
         

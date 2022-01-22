@@ -20,6 +20,7 @@ int main(int argc, char ** argv)
     bool quit = false;
     SDL_Event event;
     SDL_Init(SDL_INIT_EVERYTHING);
+     if(TTF_Init() == -1){printf("error");}
     srand(time(NULL));
     int pointsOfMap[]={1,2,3,4,5,6,7,8,9,10,11,12};
     int tedad=rand()%6+6;
@@ -49,11 +50,11 @@ int main(int argc, char ** argv)
  int fpm= 60;
  int isset=1;
  int tedadeharif= rand()%2+1;
- /*TTF_Init();
-  TTF_Font *font = TTF_OpenFont("LiberationSerif-Regular.ttf",20);
-  SDL_Color color = {0,255,0,255};
-  SDL_Surface *text = TTF_RenderText_Solid(font,"hello world",color);
-  SDL_Texture *message = SDL_CreateTextureFromSurface(renderer1,text);*/
+
+  
+  //if(font == NULL){printf("inam na\n");}
+  
+  //SDL_Texture *message = SDL_CreateTextureFromSurface(renderer1,text);
    SDL_bool done = true;
 int xm, ym;
 Uint32 buttons;
@@ -81,7 +82,7 @@ int iswindow= select_naghse+8;
 
         SDL_RenderClear(renderer1);
       
-        
+       
       
        
         if(iswindow == -1){
@@ -114,6 +115,7 @@ int iswindow= select_naghse+8;
         else if(iswindow == select_naghse+8)
         {
             #include</home/alireza/state.io/src/select_naghse.c>
+            
         }
         else 
         {
@@ -121,7 +123,8 @@ int iswindow= select_naghse+8;
           SDL_RenderPresent(renderer2);
 
         }
-        printf("iswindow = %d \n",iswindow);
+        
+        //printf("iswindow = %d \n",iswindow);
         SDL_Delay(1000/fpm);
 
     }

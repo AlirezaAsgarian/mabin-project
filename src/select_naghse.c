@@ -85,6 +85,7 @@
            SDL_RenderCopy(renderer1,*(buT+1),NULL,&b2r);
            SDL_RenderCopy(renderer1,*(buT+2),NULL,&b3r);
            SDL_RenderCopy(renderer1,*(buT+3),NULL,&b4r);
+           
           SDL_RenderPresent(renderer1);
         for(int i=0;i<4;++i)
        {
