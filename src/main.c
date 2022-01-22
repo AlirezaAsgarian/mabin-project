@@ -47,6 +47,8 @@ int main(int argc, char ** argv)
      
 
  int fpm= 60;
+ int isset=1;
+ int tedadeharif= rand()%2+1;
  /*TTF_Init();
   TTF_Font *font = TTF_OpenFont("LiberationSerif-Regular.ttf",20);
   SDL_Color color = {0,255,0,255};

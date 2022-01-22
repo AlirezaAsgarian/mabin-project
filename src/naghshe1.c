@@ -111,6 +111,7 @@
     SDL_Surface *t27xb = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 27/blue.png");
     SDL_Surface *r1b = IMG_Load("/home/alireza/state.io/src/project_photo/Repositories/icons-castle-blue.png");
     SDL_Surface *r1r = IMG_Load("/home/alireza/state.io/src/project_photo/Repositories/icons-castle-red.png");
+    SDL_Surface *r2r = IMG_Load("/home/alireza/state.io/src/project_photo/Repositories/icons-skeleton-red.png");
     SDL_Surface **images =(SDL_Surface **)malloc(108*sizeof(SDL_Surface*));
             *(images)=t1;
             *(images+1)=t2;
@@ -250,8 +251,9 @@
         SDL_Texture *te27 = SDL_CreateTextureFromSurface(renderer1,t27x);
         SDL_Texture *Tr1r = SDL_CreateTextureFromSurface(renderer1,r1r);
         SDL_Texture *Tr1b = SDL_CreateTextureFromSurface(renderer1,r1b);
+        SDL_Texture *Tr2r = SDL_CreateTextureFromSurface(renderer1,r2r);
         SDL_Texture **armsT =(SDL_Texture **)malloc(10*sizeof(SDL_Texture*));
-        *(armsT)=NULL; *(armsT+1)=Tr1r; *(armsT+2)=Tr1b;
+        *(armsT)=NULL; *(armsT+1)=Tr1r; *(armsT+2)=Tr1b; *(armsT+3)=Tr2r;
         SDL_Texture **distinct =(SDL_Texture **)malloc(10*sizeof(SDL_Texture*));
         SDL_Texture **imagess =(SDL_Texture **)malloc(108*sizeof(SDL_Texture*));
         for(int i=0;i<108;++i)
@@ -297,12 +299,12 @@
         SDL_FreeSurface(t26x);
         SDL_FreeSurface(t27x);
         SDL_FreeSurface(image);
-        int ratio=13;
+       /* int ratio=13;
         int biajolo=229;
-        int biabala=30;
+        int biabala=30;*/
         SDL_Rect dis;
         dis.x=0; dis.y=0; dis.w =1080; dis.h=554; 
-        SDL_Rect t11;
+        /*SDL_Rect t11;
         t11.x = 72.5*ratio/10+biajolo; t11.y=36*ratio/10-biabala; t11.w=111*ratio/10; t11.h=69*ratio/10;
         SDL_Rect t12;
         t12.x = 57*ratio/10+biajolo-1; t12.y=96*ratio/10-biabala-1; t12.w=130*ratio/10; t12.h=94*ratio/10;
@@ -317,9 +319,75 @@
         SDL_Rect t17;
         t17.x = 219*ratio/10+biajolo; t17.y=46*ratio/10-biabala; t17.w=140*ratio/10; t17.h=106*ratio/10;
         SDL_Rect t18;
-        t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;
-        
+        t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;*/
         SDL_Rect t116;
+        //bazi1
+        
+        struct Arm
+        {
+            SDL_Rect position;
+            SDL_Texture *armt;
+        };
+        struct paigah{
+        SDL_Rect position;
+        int user;
+        SDL_Texture *color;
+        struct Arm *arm;
+        };
+        struct paigah* paigah=( struct paigah*)malloc(sizeof(struct paigah)*8);
+        int ratio=13;
+        int ratio1=4;
+        int biajolo=229;
+        int biabala=30;
+     
+        SDL_Rect *arms=(SDL_Rect *)malloc(sizeof(SDL_Rect)*8);
+        SDL_Rect t11;
+        t11.x = 72.5*ratio/10+biajolo; t11.y=36*ratio/10-biabala; t11.w=111*ratio/10; t11.h=69*ratio/10;
+        SDL_Rect r11;
+        r11.x = 72.5*ratio/10+biajolo+41; r11.y=36*ratio/10-biabala+4; r11.w=34; r11.h=41;
+        *(arms)=r11;
+        SDL_Rect t12;
+        t12.x = 57*ratio/10+biajolo-1; t12.y=96*ratio/10-biabala-1; t12.w=130*ratio/10; t12.h=94*ratio/10;
+        SDL_Rect r12;
+        r12.x = 57*ratio/10+biajolo-1+76; r12.y=96*ratio/10-biabala+12; r12.w=34; r12.h=41;
+        *(arms+1)=r12;
+        SDL_Rect t13;
+        t13.x = 54*ratio/10+biajolo; t13.y=165*ratio/10-biabala; t13.w=139*ratio/10; t13.h=238*ratio/10;
+        SDL_Rect r13;
+        r13.x = 54*ratio/10+biajolo+49; r13.y=165*ratio/10-biabala+64; r13.w=34; r13.h=41;
+        *(arms+2)=r13;
+        SDL_Rect t14;
+        t14.x = 175*ratio/10+biajolo; t14.y=31*ratio/10-biabala; t14.w=87*ratio/10; t14.h=152*ratio/10;
+        SDL_Rect r14;
+        r14.x = 175*ratio/10+biajolo+10; r14.y=31*ratio/10-biabala+73; r14.w=34; r14.h=41;
+        *(arms+3)=r14;
+        SDL_Rect t15;
+        t15.x = 156*ratio/10+biajolo; t15.y=175*ratio/10-biabala; t15.w=94*ratio/10; t15.h=155*ratio/10;
+        SDL_Rect r15;
+        r15.x = 156*ratio/10+biajolo+45; r15.y=175*ratio/10-biabala+34; r15.w=34; r15.h=41;
+        *(arms+4)=r15;
+        SDL_Rect t16;
+        t16.x = 176*ratio/10+biajolo; t16.y=262*ratio/10-biabala; t16.w=128*ratio/10; t16.h=174*ratio/10;
+        SDL_Rect r16;
+        r16.x = 176*ratio/10+biajolo+58; r16.y=262*ratio/10-biabala+68; r16.w=34; r16.h=41;
+        *(arms+5)=r16;
+        SDL_Rect t17;
+        t17.x = 219*ratio/10+biajolo; t17.y=46*ratio/10-biabala; t17.w=140*ratio/10; t17.h=106*ratio/10;
+        SDL_Rect r17;
+        r17.x = 219*ratio/10+biajolo+72; r17.y=46*ratio/10-biabala+36; r17.w=34; r17.h=41;
+        *(arms+6)=r17;
+        SDL_Rect t18;
+        t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;
+        SDL_Rect r18;
+        r18.x = 246*ratio/10+biajolo+71; r18.y=142*ratio/10-biabala+57; r18.w=34; r18.h=41;
+        *(arms+7)=r18;
+        for(int i=0;i<8;++i)
+        { 
+                (paigah+i)->arm = (struct Arm*)malloc(sizeof(struct Arm));
+                (paigah+i)->arm->position = *(arms+i);
+         
+                
+        }
         
         
         

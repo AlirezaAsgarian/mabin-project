@@ -1,17 +1,71 @@
-        struct Arm
-        {
-            SDL_Rect position;
-        };
-        struct paigah{
-        SDL_Rect position;
-        int user;
-        SDL_Texture *color;
-        struct Arm *arm;
-        };
         
+        
+       
+       
+       printf("tedadeharif=%d isset=%d\n",tedadeharif,isset);
+       
+       if(isset)
+       {
+       
+       if(tedadeharif == 1)
+       {
+        
+        for(int i=0;i<8;++i)
+        {
+                (paigah+i)->user = 0;
+                
+        }
+           //int *users=(int *)malloc(sizeof(int)*3);  *users=0; *(users+1)=1; *(users+2)=2;  
+           int *randd=(int *)malloc(sizeof(int));
+           *randd=rand()%3; if(*randd == 1){(paigah)->user=1;} else if(*(randd)== 2){(paigah+1)->user=1;} else{(paigah+3)->user=1;} free(randd);
+           int *rand1=(int *)malloc(sizeof(int));
+           *rand1=rand()%3; if(*rand1 == 1){(paigah+5)->user=2;} else{(paigah+7)->user=2;} free(rand1);
+        for(int i=0;i<8;++i)
+        {
+               if((paigah+i)->user == 0){(paigah+i)->arm->armt= *(armsT);}
+               else if((paigah+i)->user == 1){(paigah+i)->arm->armt= *(armsT+1);}
+               else{(paigah+i)->arm->armt= *(armsT+2);}
+                
+        }
+           isset=0;
+       }
+       else
+       {
+        
+        for(int i=0;i<8;++i)
+        {
+                (paigah+i )->user = 0;
+                
+        }
+           int *randd=(int *)malloc(sizeof(int));
+           *randd=rand()%3; if(*randd == 1){(paigah)->user=1;(paigah+2)->user=2; (paigah+7)->user=3; } 
+           else if(*(randd)== 2){(paigah+1)->user=1;(paigah+5)->user=2; (paigah+6)->user=3;} 
+           else{(paigah)->user=2;(paigah+2)->user=3; (paigah+7)->user=1;} 
+           free(randd);
+        for(int i=0;i<8;++i)
+        {
+               if((paigah+i)->user == 0){(paigah+i)->arm->armt= *(armsT);}
+               else if((paigah+i)->user == 1){(paigah+i)->arm->armt= *(armsT+1);}
+               else if((paigah+i)->user == 2){(paigah+i)->arm->armt= *(armsT+2);}
+               else{(paigah+i)->arm->armt= *(armsT+3);}
+                
+        }
+           isset=0;
+       }
+       }
 
-        struct paigah* paigah=( struct paigah*)malloc(sizeof(struct paigah)*8);
-        int ratio=13;
+
+
+
+
+
+
+
+
+
+       
+        
+        /*int ratio=13;
         int ratio1=4;
         int biajolo=229;
         int biabala=30;
@@ -56,23 +110,17 @@
         t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;
         SDL_Rect r18;
         r18.x = 246*ratio/10+biajolo+71; r18.y=142*ratio/10-biabala+57; r18.w=34; r18.h=41;
-        *(arms+7)=r18;
-        
-        for(int i=0;i<8;++i)
-        {
-                if(i % 3 == 0){(paigah+i )->user = 2;}
-                else if(i % 3 == 1){(paigah+i) -> user = 1;}
-                else {(paigah+i) -> user = 3;}
-        }
+        *(arms+7)=r18;*/
         
         
         
-        for(int i=0;i<8;++i)
-        { 
-                (paigah+i)->arm = (struct Arm*)malloc(sizeof(struct Arm));
-                (paigah+i)->arm->position = *(arms+i);
-        }
+        
+        
+        
         int rand_arm=rand()%3+1;
+       
+       //render copies
+       printf("paigah->user=%d\n",paigah->user);
         switch (paigah->user)
         {
         case 0: 
@@ -85,19 +133,19 @@
         paigah -> position =t11; 
       //  SDL_RenderCopy(renderer1,paigah-> color,NULL,&(paigah->position));
         SDL_RenderCopy(renderer1,paigah-> color,NULL,&(paigah->position));
-        SDL_RenderCopy(renderer1,*(armsT),NULL,&(paigah->arm->position));
+        SDL_RenderCopy(renderer1,paigah->arm->armt,NULL,&(paigah->arm->position));
         break;
         case 2: 
         paigah-> color = *(imagess+54);
         paigah -> position =t11; 
         SDL_RenderCopy(renderer1,paigah-> color,NULL,&(paigah->position));
-        SDL_RenderCopy(renderer1,*(armsT),NULL,&(paigah->arm->position));
+        SDL_RenderCopy(renderer1,paigah->arm->armt,NULL,&(paigah->arm->position));
         break;
         case 3 : 
         paigah-> color = *(imagess+81);
         paigah -> position =t11; 
         SDL_RenderCopy(renderer1,paigah-> color,NULL,&(paigah->position));
-        SDL_RenderCopy(renderer1,*(armsT),NULL,&(paigah->arm->position));
+         SDL_RenderCopy(renderer1,paigah->arm->armt,NULL,&(paigah->arm->position));
         default:
                 break;
         }
@@ -113,19 +161,19 @@
         (paigah+1)-> color = *(imagess+27+1);
         (paigah+1)-> position =t12; 
         SDL_RenderCopy(renderer1,(paigah+1)-> color,NULL,&((paigah+1)->position));
-        SDL_RenderCopy(renderer1,*(armsT+1),NULL,&((paigah+1)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+1)->arm->armt,NULL,&((paigah+1)->arm->position));
         break;
         case 2: 
         (paigah+1)-> color = *(imagess+54+1);
         (paigah+1) -> position =t12; 
         SDL_RenderCopy(renderer1,(paigah+1)-> color,NULL,&((paigah+1)->position));
-        SDL_RenderCopy(renderer1,*(armsT+1),NULL,&((paigah+1)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+1)->arm->armt,NULL,&((paigah+1)->arm->position));
         break;
         case 3 : 
         (paigah+1)-> color = *(imagess+81+1);
         (paigah+1) -> position =t12; 
         SDL_RenderCopy(renderer1,(paigah+1)-> color,NULL,&((paigah+1)->position));
-        SDL_RenderCopy(renderer1,*(armsT+1),NULL,&((paigah+1)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+1)->arm->armt,NULL,&((paigah+1)->arm->position));
         default:
                 break;
         }
@@ -141,19 +189,19 @@
         (paigah+2)-> color = *(imagess+2+27);
         (paigah+2) -> position =t13;
         SDL_RenderCopy(renderer1,(paigah+2)-> color,NULL,&((paigah+2)->position)); 
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+2)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+2)->arm->armt,NULL,&((paigah+2)->arm->position));
         break;
         case 2: 
         (paigah+2)-> color = *(imagess+2+54);
         (paigah+2) -> position =t13;
         SDL_RenderCopy(renderer1,(paigah+2)-> color,NULL,&((paigah+2)->position)); 
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+2)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+2)->arm->armt,NULL,&((paigah+2)->arm->position));
         break;
         case 3 : 
         (paigah+2)-> color = *(imagess+2+81);
         (paigah+2) -> position =t13; 
         SDL_RenderCopy(renderer1,(paigah+2)-> color,NULL,&((paigah+2)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+2)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+2)->arm->armt,NULL,&((paigah+2)->arm->position));
         default:
                 break;
         }
@@ -168,19 +216,19 @@
         (paigah+3)-> color = *(imagess+3+27);
         (paigah+3) -> position =t14; 
         SDL_RenderCopy(renderer1,(paigah+3)-> color,NULL,&((paigah+3)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+3)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+3)->arm->armt,NULL,&((paigah+3)->arm->position));
         break;
         case 2: 
         (paigah+3)-> color = *(imagess+3+54);
         (paigah+3) -> position =t14; 
         SDL_RenderCopy(renderer1,(paigah+3)-> color,NULL,&((paigah+3)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+3)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+3)->arm->armt,NULL,&((paigah+3)->arm->position));
         break;
         case 3 : 
         (paigah+3)-> color = *(imagess+3+81);
         (paigah+3) -> position =t14; 
         SDL_RenderCopy(renderer1,(paigah+3)-> color,NULL,&((paigah+3)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+3)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+3)->arm->armt,NULL,&((paigah+3)->arm->position));
         default:
                 break;
         }
@@ -195,19 +243,19 @@
         (paigah+4)-> color = *(imagess+4+27);
         (paigah+4) -> position =t15; 
         SDL_RenderCopy(renderer1,(paigah+4)-> color,NULL,&((paigah+4)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+4)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+4)->arm->armt,NULL,&((paigah+4)->arm->position));
         break;
         case 2: 
         (paigah+4)-> color = *(imagess+4+54);
         (paigah+4) -> position =t15; 
         SDL_RenderCopy(renderer1,(paigah+4)-> color,NULL,&((paigah+4)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+4)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+4)->arm->armt,NULL,&((paigah+4)->arm->position));
         break;
         case 3 : 
         (paigah+4)-> color = *(imagess+4+81);
         (paigah+4) -> position =t15; 
         SDL_RenderCopy(renderer1,(paigah+4)-> color,NULL,&((paigah+4)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+4)->arm->position));        
+        SDL_RenderCopy(renderer1,(paigah+4)->arm->armt,NULL,&((paigah+4)->arm->position));        
                 default:
                 break;
         }
@@ -222,19 +270,19 @@
         (paigah+5)-> color = *(imagess+5+27);
         (paigah+5)-> position =t16; 
         SDL_RenderCopy(renderer1,(paigah+5)-> color,NULL,&((paigah+5)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+5)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+5)->arm->armt,NULL,&((paigah+5)->arm->position));
         break;
         case 2: 
         (paigah+5)-> color = *(imagess+5+54);
         (paigah+5)-> position =t16; 
         SDL_RenderCopy(renderer1,(paigah+5)-> color,NULL,&((paigah+5)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+5)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+5)->arm->armt,NULL,&((paigah+5)->arm->position));
         break;
         case 3 : 
         (paigah+5)-> color = *(imagess+5+81);
         (paigah+5)-> position =t16; 
         SDL_RenderCopy(renderer1,(paigah+5)-> color,NULL,&((paigah+5)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+5)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+5)->arm->armt,NULL,&((paigah+5)->arm->position));
         default:
                 break;
         }
@@ -249,19 +297,19 @@
         (paigah+6)-> color = *(imagess+6+27);
         (paigah+6) -> position =t17; 
         SDL_RenderCopy(renderer1,(paigah+6)-> color,NULL,&((paigah+6)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+6)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+6)->arm->armt,NULL,&((paigah+6)->arm->position));
         break;
         case 2: 
         (paigah+6)-> color = *(imagess+6+54);
         (paigah+6) -> position =t17; 
         SDL_RenderCopy(renderer1,(paigah+6)-> color,NULL,&((paigah+6)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+6)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+6)->arm->armt,NULL,&((paigah+6)->arm->position));
         break;
         case 3 : 
          (paigah+6)-> color = *(imagess+6+81);
         (paigah+6) -> position =t17; 
         SDL_RenderCopy(renderer1,(paigah+6)-> color,NULL,&((paigah+6)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+6)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+6)->arm->armt,NULL,&((paigah+6)->arm->position));
         default:
                 break;
         }
@@ -276,19 +324,19 @@
         (paigah+7) -> color = *(imagess+7+27);
         (paigah+7) -> position =t18; 
         SDL_RenderCopy(renderer1,(paigah+7)-> color,NULL,&((paigah+7)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+7)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+7)->arm->armt,NULL,&((paigah+7)->arm->position));
         break;
         case 2: 
         (paigah+7) -> color = *(imagess+7+54);
         (paigah+7) -> position =t18; 
         SDL_RenderCopy(renderer1,(paigah+7)-> color,NULL,&((paigah+7)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+7)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+7)->arm->armt,NULL,&((paigah+7)->arm->position));
         break;
         case 3 : 
         (paigah+7) -> color = *(imagess+7+81);
         (paigah+7) -> position =t18; 
         SDL_RenderCopy(renderer1,(paigah+7)-> color,NULL,&((paigah+7)->position));
-        SDL_RenderCopy(renderer1,Tr1r,NULL,&((paigah+7)->arm->position));
+        SDL_RenderCopy(renderer1,(paigah+7)->arm->armt,NULL,&((paigah+7)->arm->position));
         default:
                 break;
         }
@@ -303,3 +351,4 @@
         SDL_RenderCopy(renderer1,te7,NULL,&t17);
         SDL_RenderCopy(renderer1,te8,NULL,&t18);*/
         SDL_RenderPresent(renderer1);
+      
