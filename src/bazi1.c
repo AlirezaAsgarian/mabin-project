@@ -22,6 +22,7 @@
            *rand1=rand()%3; if(*rand1 == 1){(paigah+5)->user=2;} else{(paigah+7)->user=2;} free(rand1);
         for(int i=0;i<8;++i)
         {
+                
                if((paigah+i)->user == 0){(paigah+i)->arm->armt= *(armsT);}
                else if((paigah+i)->user == 1){(paigah+i)->arm->armt= *(armsT+1);}
                else{(paigah+i)->arm->armt= *(armsT+2);}
@@ -52,6 +53,7 @@
         }
            isset=0;
        }
+       
        }
 
         
@@ -121,7 +123,7 @@
         r18.x = 246*ratio/10+biajolo+71; r18.y=142*ratio/10-biabala+57; r18.w=34; r18.h=41;
         *(arms+7)=r18;*/
         
-        addsoldier(((paigah+2)),4,renderer1);
+       // minussoldier(((paigah+2)),4,renderer1);
         
         
         
@@ -395,6 +397,12 @@
         //printf("%p\n",(paigah+2)->sarbaz->tedad);
         //if((paigah+2)->sarbaz->tedad == NULL){printf("noooooooooo\n");}
 //        if((paigah+2)->sarbaz->position == &c13){printf("qqqqqq\n");}
-        SDL_RenderCopy(renderer1,(paigah+2)->sarbaz->tedad,NULL,&((paigah+2)->sarbaz->position));
+      //  SDL_RenderCopy(renderer1,(paigah+2)->sarbaz->tedad,NULL,&((paigah+2)->sarbaz->position));
+        
+        
+        rendersoldiers(head_sarbazRuHava);
+        continuetomove(head_sarbazRuHava);
+        
         SDL_RenderPresent(renderer1);
+        
       

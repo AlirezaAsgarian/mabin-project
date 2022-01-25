@@ -2,6 +2,7 @@
 
    int is_destination=0;
    int location=0;
+   //load parts of naghshe
     SDL_Surface *image = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/nagshe2.png");
     SDL_Surface *t1 = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 1/white2.png");
     SDL_Surface *t2 = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 2/white2.png");
@@ -109,11 +110,14 @@
     SDL_Surface *t23xb = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 23/blue.png");
     SDL_Surface *t24xb = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 24/blue.png");
     SDL_Surface *t25xb = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 25/blue.png");
-    SDL_Surface *t26xb = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 26/blue.png");
+    SDL_Surface *t26xb = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 26/blue.png"); 
     SDL_Surface *t27xb = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 27/blue.png");
+    //arms ////////////////////////////////////////////////////////////////////////////////////////////////////////
     SDL_Surface *r1b = IMG_Load("/home/alireza/state.io/src/project_photo/Repositories/icons-castle-blue.png");
     SDL_Surface *r1r = IMG_Load("/home/alireza/state.io/src/project_photo/Repositories/icons-castle-red.png");
     SDL_Surface *r2r = IMG_Load("/home/alireza/state.io/src/project_photo/Repositories/icons-skeleton-red.png");
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    SDL_Surface *S1= IMG_Load("/home/alireza/state.io/src/project_photo/Soldiers/arrow icon_red.png");
     SDL_Surface **images =(SDL_Surface **)malloc(108*sizeof(SDL_Surface*));
             *(images)=t1;
             *(images+1)=t2;
@@ -324,8 +328,7 @@
         t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;*/
         SDL_Rect t116;
         //bazi1
-        
-        struct Arm
+                struct Arm
         {
             SDL_Rect position;
             SDL_Texture *armt;
@@ -351,8 +354,11 @@
      
         SDL_Rect *arms=(SDL_Rect *)malloc(sizeof(SDL_Rect)*8);
         SDL_Rect *counter=(SDL_Rect *)malloc(sizeof(SDL_Rect)*8);
+        SDL_Rect *position_paigah=(SDL_Rect *)malloc(sizeof(SDL_Rect *)*8);
+        ////////// define rects //////////////////////////////////////////////////////////////////////
         SDL_Rect t11;
         t11.x = 72.5*ratio/10+biajolo; t11.y=36*ratio/10-biabala; t11.w=111*ratio/10; t11.h=69*ratio/10;
+        *(position_paigah)=t11;
         SDL_Rect r11;
         r11.x = 72.5*ratio/10+biajolo+41; r11.y=36*ratio/10-biabala+4; r11.w=34; r11.h=41;
         *(arms)=r11;
@@ -361,6 +367,7 @@
         *(counter)=c11;
         SDL_Rect t12;
         t12.x = 57*ratio/10+biajolo-1; t12.y=96*ratio/10-biabala-1; t12.w=130*ratio/10; t12.h=94*ratio/10;
+        *(position_paigah+1)=t12;
         SDL_Rect r12;
         r12.x = 57*ratio/10+biajolo-1+76; r12.y=96*ratio/10-biabala+12; r12.w=34; r12.h=41;
         *(arms+1)=r12;
@@ -369,6 +376,7 @@
        *(counter+1)=c12;
         SDL_Rect t13;
         t13.x = 54*ratio/10+biajolo; t13.y=165*ratio/10-biabala; t13.w=139*ratio/10; t13.h=238*ratio/10;
+        *(position_paigah+2)=t13;
         SDL_Rect r13;
         r13.x = 54*ratio/10+biajolo+49; r13.y=165*ratio/10-biabala+64; r13.w=34; r13.h=41;
         *(arms+2)=r13;
@@ -377,6 +385,7 @@
         *(counter+2)=c13;
         SDL_Rect t14;
         t14.x = 175*ratio/10+biajolo; t14.y=31*ratio/10-biabala; t14.w=87*ratio/10; t14.h=152*ratio/10;
+        *(position_paigah+3)=t14;
         SDL_Rect r14;
         r14.x = 175*ratio/10+biajolo+10; r14.y=31*ratio/10-biabala+73; r14.w=34; r14.h=41;
         *(arms+3)=r14;
@@ -385,6 +394,7 @@
         *(counter+3)=c14;
         SDL_Rect t15;
         t15.x = 156*ratio/10+biajolo; t15.y=175*ratio/10-biabala; t15.w=94*ratio/10; t15.h=155*ratio/10;
+        *(position_paigah+4)=t15;
         SDL_Rect r15;
         r15.x = 156*ratio/10+biajolo+45; r15.y=175*ratio/10-biabala+34; r15.w=34; r15.h=41;
         *(arms+4)=r15;
@@ -393,6 +403,7 @@
         *(counter+4)=c15;
         SDL_Rect t16;
         t16.x = 176*ratio/10+biajolo; t16.y=262*ratio/10-biabala; t16.w=128*ratio/10; t16.h=174*ratio/10;
+        *(position_paigah+5)=t16;
         SDL_Rect r16;
         r16.x = 176*ratio/10+biajolo+58; r16.y=262*ratio/10-biabala+68; r16.w=34; r16.h=41;
         *(arms+5)=r16;
@@ -401,6 +412,7 @@
         *(counter+5)=c16;
         SDL_Rect t17;
         t17.x = 219*ratio/10+biajolo; t17.y=46*ratio/10-biabala; t17.w=140*ratio/10; t17.h=106*ratio/10;
+        *(position_paigah+6)=t17;
         SDL_Rect r17;
         r17.x = 219*ratio/10+biajolo+72; r17.y=46*ratio/10-biabala+36; r17.w=34; r17.h=41;
         *(arms+6)=r17;
@@ -409,13 +421,160 @@
         *(counter+6)=c17;
         SDL_Rect t18;
         t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;
+         *(position_paigah+7)=t18;
         SDL_Rect r18;
         r18.x = 246*ratio/10+biajolo+71; r18.y=142*ratio/10-biabala+57; r18.w=34; r18.h=41;
         *(arms+7)=r18;
         SDL_Rect c18;
         c18.x = 246*ratio/10+biajolo+71; c18.y=142*ratio/10-biabala+57+45; c18.w=32; c18.h=29;
         *(counter+7)=c18;
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        struct sarbazRuHava
+        {
+          double positionLx;
+          double positionLy;
+          double positionDx;
+          double positionDy;
+          SDL_Rect *position;
+          int jahateharecat;
+          int user;
+          int speed;
+          double teta;
+          SDL_Texture *arm;
+          int ison;
+          int tedadeshun;
+        };
+        struct sarbazRuHava* sarbazH = (struct sarbazRuHava*)malloc(sizeof(struct sarbazRuHava)*100);
+        int is_move=0;
+       void  addSarbazRuHava(int tedad,int deltay,int deltax)
+        {
+            printf("tedadeshun=%d\n",tedad);
+             printf("deltay=%d deltax=%d\n",deltay,deltax);
+            for(int i=0;i<tedad;++i)
+            {
+                 printf("deltay=%d deltax=%d\n",deltay,deltax);
+                if(deltay>=0 && deltax>=0)
+                {
+                    printf("j=1\n");
+                    (sarbazH+i)->jahateharecat=1;
+                }
+                else if(deltay >=0 && deltax<=0)
+                {
+                   
+                    (sarbazH+i)->jahateharecat=2;
+                }
+                else if(deltay<=0 && deltax<=0)
+                {
+                     (sarbazH+i)->jahateharecat=3;
+                }
+                else 
+                {
+                    (sarbazH+i)->jahateharecat=4;
+                }
+                
+                (sarbazH+i)->position=(SDL_Rect *)malloc(sizeof(SDL_Rect*));(sarbazH+i)->position->x=((sarbazH+i)->positionLx); (sarbazH+i)->position->y= ((sarbazH+i)->positionLy);
+                (sarbazH+i)->position->w=10; (sarbazH+i)->position->h=10;
+                if(i % 3 == 1){(sarbazH+i)->position->y -= 6;}
+                if(i % 3 == 2){(sarbazH+i)->position->y +=6 ;}
+                 //printf("(sarbazH+i)->position->y=%d\n",(sarbazH+i)->position->y);
+                (sarbazH+i)->arm = (SDL_Texture *)malloc(sizeof(SDL_Texture*));
+                (sarbazH+i)->arm = SDL_CreateTextureFromSurface(renderer1,S1);
+                if((sarbazH+i)->arm == NULL){printf("%s",SDL_GetError());}
+               int deltaxCopy = (deltax < 0) ? -deltax: deltax;
+               int deltayCopy = (deltay < 0) ? -deltay : deltay;
+                double tan= (double)deltayCopy/deltaxCopy;
+                printf("%lf\n",tan);
+                (sarbazH+i)->teta= atan(tan);
+                (sarbazH+i)->ison= 2;
+                //printf("teta=%lf\n",(sarbazH+i)->teta);
         
+        }
+        }
+        void rendersoldiers(int *head)
+        {
+            int i=0;
+            
+            while(1)
+            { 
+                //printf("head=%d\n",*head);
+             if(sarbazH+i){ SDL_RenderCopy(renderer1,(sarbazH+i)->arm,NULL,(sarbazH+i)->position);
+             ++i;
+             if((sarbazH+i)->ison != 2){break;}
+             if(i >= *head){
+                 ++ *head;
+                 if(*head % 3 == 0){break;}
+                 else {}
+                 }   
+             }
+            
+            
+        }
+        }
+       /* void rendersoldier()
+        {
+            int i=0;
+             while ((sarbazH+i)->ison == 2 )
+             {
+                SDL_RenderCopy(renderer1,(sarbazH+i)->arm,NULL,(sarbazH+i)->position);
+                 ++i;
+             }
+        }*/
+         //double ezafecos=0;
+        // double ezafesin=0;
+        void continuetomove(int *head)
+        {
+             int i=0;
+           //  printf("head=%d\n",*head);
+            while(1)
+            { 
+                //  printf("x=%d y=%d\n",(sarbazH+i)->position->x,(sarbazH+i)->position->y);
+               
+               
+               if(((sarbazH+i)->ison == 2))
+               {
+                   printf("j=%d\n",(sarbazH+i)->jahateharecat);
+                 switch ((sarbazH+i)->jahateharecat)
+                 {
+                 case 1:
+                 (sarbazH+i)->position->x +=(10*cos( (sarbazH+i)->teta));
+                 (sarbazH+i)->position->y +=(10*sin( (sarbazH+i)->teta));
+                     break;
+                 case 2 :
+               //  printf("teta=%lf\n",(sarbazH+i)->teta);
+                 // ezafecos=cos( (sarbazH+i)->teta);
+                  //ezafesin=sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->x -=10*cos( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y +=10*sin( (sarbazH+i)->teta);
+                 if((double)10*sin( (sarbazH+i)->teta)>0){printf("sinus khoobe\n");}
+                 if ((double)10*cos( (sarbazH+i)->teta)>0){printf("cosinus khoobe\n");}
+                
+                 printf("sin=%d cos%d\n",(sarbazH+i)->position->y ,(sarbazH+i)->position->x);
+                 break;
+                 case 3 :
+                 (sarbazH+i)->position->x -=10*cos( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y -=10*sin( (sarbazH+i)->teta);
+                 break;
+                 case 4 :
+                 (sarbazH+i)->position->x +=10*cos( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y -=10*sin( (sarbazH+i)->teta);
+                 default:
+                     break;
+                 }
+               }
+             
+                 /*if( (sarbazH+i)->position->y > (sarbazH+i)->positionDy &&  (sarbazH+i)->position->y < (sarbazH+i)->positionDy+41 &&  (sarbazH+i)->position->x > (sarbazH+i)->positionDx &&  (sarbazH+i)->position->x < (sarbazH+i)->positionDx+34)
+                  {free((sarbazH+i));printf("Yes\n");}*/
+                  ++i;
+                //  printf("i=%d\n",i);
+               
+                  if(i  >= *head){break;}
+                  //if(i  >= 49){break;}
+             }
+        }
+
+        int *head_sarbazRuHava=(int *)malloc(sizeof(int));
+        *head_sarbazRuHava=0;
+
         TTF_Font *font = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
         if(font == NULL){printf("bia paeen saremon dard geref %s\n",TTF_GetError());}
         for(int i=0;i<8;++i)
@@ -456,8 +615,10 @@
         }        
         void minussoldier(struct paigah* paigah1,int add,SDL_Renderer *renderer)
         {
+        //printf("paigah=%p\n",paigah1);
+        if((paigah1)->sarbaz->tedadeshun>0)
+        {
         TTF_Font *font1 = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
-        printf("paigah=%p\n",paigah1);
         (paigah1)->sarbaz->tedadeshun-=add;
         printf("tedad=%d\n",(paigah1)->sarbaz->tedadeshun);
         char *c=(char *)malloc(sizeof(char)*10);
@@ -470,9 +631,45 @@
         if(text == NULL){printf("%s\n",TTF_GetError());}
         (paigah1)->sarbaz->tedad=SDL_CreateTextureFromSurface(renderer,text);
         free(text); free(c); TTF_CloseFont(font1);
+        }
         }        
-        
-        
-        
+      ////////////////////add location or destination fo soldiers /////////////////////////////////////////
+        void addlocation(int location,struct paigah* paigah)
+       {
+
+           for(int i=0;i<(paigah+location)->sarbaz->tedadeshun;++i)
+           {
+                       (sarbazH+i)->positionLx=((paigah+location)->arm->position.x)+15;
+                       (sarbazH+i)->positionLy=((paigah+location)->arm->position.y)+15;
+
+           }
+
+
+
+
+       }
+        void add_destination(int destination,struct paigah* paigah)
+       {
+
+           for(int i=0;i<(paigah+destination)->sarbaz->tedadeshun;++i)
+           {
+           /*    if(i == 7){
+                       (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x));
+                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y));
+               }*/
+                       (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x)+15);
+                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y)+20);
+
+           }
+
+       }
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////submit positions for paigah////////////////////////////////////////////////////
+        for(int i=0;i<8;++i)
+        {
+            (paigah+i)->position.x=(position_paigah+i)->x;
+            (paigah+i)->position.y=(position_paigah+i)->y;
+            printf("xpostion=%d yposition=%d \n",(paigah+i)->position.x=(position_paigah+i)->x,(paigah+i)->position.y=(position_paigah+i)->y);
+        }
        
         

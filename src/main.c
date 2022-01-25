@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include <SDL.h>       
 #include<stdbool.h>
+#include<math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -29,7 +30,7 @@ int main(int argc, char ** argv)
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1080, 554, 0);
     SDL_Renderer *renderer1 = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_Renderer *renderer2 = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-   
+   int counter_Time=0;
      #include</home/alireza/state.io/src/naghshe1.c>
      SDL_Rect bakhsh1; bakhsh1.x=0; bakhsh1.y=0; bakhsh1.w=270; bakhsh1.h=185;
      SDL_Rect bakhsh2; bakhsh2.x=270; bakhsh2.y=0; bakhsh2.w=270; bakhsh2.h=185;
@@ -48,6 +49,7 @@ int main(int argc, char ** argv)
      
 
  int fpm= 60;
+
  int isset=1;
  int tedadeharif= rand()%2+1;
 
@@ -64,6 +66,7 @@ button.x=0; button.y=0; button.w=50; button.h=50;
  //SDL_RenderFillRect(renderer2,&button);
 
 int iswindow= select_naghse+8;
+//int iswindow = -2;
     while (!quit)
     {
       buttons = SDL_GetMouseState(&xm, &ym);
@@ -123,7 +126,8 @@ int iswindow= select_naghse+8;
           SDL_RenderPresent(renderer2);
 
         }
-        
+        ++counter_Time;
+        if(counter_Time>60){counter_Time=0;}        
         //printf("iswindow = %d \n",iswindow);
         SDL_Delay(1000/fpm);
 
