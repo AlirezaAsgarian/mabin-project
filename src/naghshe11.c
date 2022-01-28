@@ -27,6 +27,16 @@
         SDL_RenderCopy(renderer1,te24,NULL,&t124);
         SDL_RenderCopy(renderer1,te25,NULL,&t125);
         SDL_RenderCopy(renderer1,te26,NULL,&t126);
-        SDL_RenderCopy(renderer1,te27,NULL,&t127);*/
+        SDL_RenderCopy(renderer1,te27,NULL,&t127);
+         void filltheblanksarbaz(int i)
+      {
+        for(int j=i;j<*(tedad+ *head_tedad-1);++j)
+        {
+          *(sarbazH+j)=*(sarbazH+j+1);
+        }
+        printf("*(tedad+ *head_tedad-1)=%d\n",*(tedad+ *head_tedad-1));
+       --*(tedad+ *head_tedad-1);
+      }
+        */
         
         

@@ -24,7 +24,7 @@ int main(int argc, char ** argv)
      if(TTF_Init() == -1){printf("error");}
     srand(time(NULL));
     int pointsOfMap[]={1,2,3,4,5,6,7,8,9,10,11,12};
-    int tedad=rand()%6+6;
+    int tedad1=rand()%6+6;
     qsort(pointsOfMap,12,sizeof(int),cmp);
     SDL_Window * window = SDL_CreateWindow("SDL2 Displaying Image",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1080, 554, 0);
@@ -93,7 +93,7 @@ int iswindow= select_naghse+8;
           SDL_RenderPresent(renderer1);}
         else if(iswindow == -2 ) { 
 
-        for(int i=0;i<tedad;++i)
+        for(int i=0;i<tedad1;++i)
         {
         SDL_RenderCopy(renderer1,*(distinct+i),NULL,&bakhsh[pointsOfMap[i]]);
         }

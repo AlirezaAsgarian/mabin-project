@@ -54,7 +54,7 @@ else if(iswindow == bazi1+20)
               if(!is_move){
               printf("moveforward\n");
               add_destination(0,paigah);
-printf("dy=%d d2%d\n",((paigah)->arm->position.y , (paigah+location)->arm->position.y));
+              printf("dy=%d d2%d\n",((paigah)->arm->position.y , (paigah+location)->arm->position.y));
               addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah)->arm->position.y - (paigah+location)->arm->position.y),((paigah)->arm->position.x - (paigah+location)->arm->position.x));
               rendersoldiers(head_sarbazRuHava);
               is_destination=0;}
@@ -279,6 +279,7 @@ printf("dy=%d d2%d\n",((paigah)->arm->position.y , (paigah+location)->arm->posit
 
                   location=7;
                   is_destination=1;
+                
                   addlocation(location, paigah);
             }
             else 
@@ -295,7 +296,7 @@ printf("dy=%d d2%d\n",((paigah)->arm->position.y , (paigah+location)->arm->posit
               if(!is_move){
               printf("moveforward\n");
               add_destination(7,paigah);
-              printf("((paigah+7)->arm->position.y - (paigah+location)->arm->position.y)=%d ((paigah+7)->arm->position.x - (paigah+location)->arm->position.x=%d\n)) ",((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
+              //printf("((paigah+7)->arm->position.y - (paigah+location)->arm->position.y)=%d ((paigah+7)->arm->position.x - (paigah+location)->arm->position.x=%d\n)) ",((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
               addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
                is_destination=0;
                rendersoldiers(head_sarbazRuHava);

@@ -268,7 +268,7 @@
         *(imagess+i)= SDL_CreateTextureFromSurface(renderer1,*(images+i));
         if(*(imagess+i) == NULL){printf("can't %s",SDL_GetError());}
         }
-     for(int i=0;i<tedad;++i)
+     for(int i=0;i<tedad1;++i)
      {
        int x=rand()%28;
        printf("x=%d\n",x);
@@ -328,7 +328,7 @@
         t18.x = 246*ratio/10+biajolo; t18.y=142*ratio/10-biabala; t18.w=158*ratio/10; t18.h=131*ratio/10;*/
         SDL_Rect t116;
         //bazi1
-                struct Arm
+        struct Arm
         {
             SDL_Rect position;
             SDL_Texture *armt;
@@ -435,6 +435,7 @@
           double positionLy;
           double positionDx;
           double positionDy;
+          int dest;
           SDL_Rect *position;
           int jahateharecat;
           int user;
@@ -444,18 +445,23 @@
           int ison;
           int tedadeshun;
         };
-        struct sarbazRuHava* sarbazH = (struct sarbazRuHava*)malloc(sizeof(struct sarbazRuHava)*100);
+        int sarbazH_size=200;
+        struct sarbazRuHava* sarbazH = (struct sarbazRuHava*)malloc(sizeof(struct sarbazRuHava)*sarbazH_size);
+        int *tedad=(int *)malloc(sizeof(int)*100);
+        int *head_tedad=(int *)malloc(sizeof(int)*2);
+        *head_tedad=1;
+        *(tedad+ *head_tedad-1)=0;
         int is_move=0;
-       void  addSarbazRuHava(int tedad,int deltay,int deltax)
+       void  addSarbazRuHava(int tedad1,int deltay,int deltax)
         {
-            printf("tedadeshun=%d\n",tedad);
-             printf("deltay=%d deltax=%d\n",deltay,deltax);
-            for(int i=0;i<tedad;++i)
+           
+             //printf("deltay=%d deltax=%d\n",deltay,deltax);
+            for(int i= *(tedad+ *head_tedad-2);i<*(tedad+*head_tedad-1);++i)
             {
-                 printf("deltay=%d deltax=%d\n",deltay,deltax);
+                // printf("deltay=%d deltax=%d\n",deltay,deltax);
                 if(deltay>=0 && deltax>=0)
                 {
-                    printf("j=1\n");
+                //    printf("j=1\n");
                     (sarbazH+i)->jahateharecat=1;
                 }
                 else if(deltay >=0 && deltax<=0)
@@ -471,37 +477,96 @@
                 {
                     (sarbazH+i)->jahateharecat=4;
                 }
-                
+                int deltaxCopy = (deltax < 0) ? -deltax: deltax;
+                int deltayCopy = (deltay < 0) ? -deltay : deltay;
+                double tan= (double)deltayCopy/deltaxCopy;
+              //  printf("%lf\n",tan);
+                (sarbazH+i)->teta= atan(tan);
                 (sarbazH+i)->position=(SDL_Rect *)malloc(sizeof(SDL_Rect*));(sarbazH+i)->position->x=((sarbazH+i)->positionLx); (sarbazH+i)->position->y= ((sarbazH+i)->positionLy);
                 (sarbazH+i)->position->w=10; (sarbazH+i)->position->h=10;
-                if(i % 3 == 1){(sarbazH+i)->position->y -= 6;}
-                if(i % 3 == 2){(sarbazH+i)->position->y +=6 ;}
-                 //printf("(sarbazH+i)->position->y=%d\n",(sarbazH+i)->position->y);
-                (sarbazH+i)->arm = (SDL_Texture *)malloc(sizeof(SDL_Texture*));
+                if(i % 3 == 1){
+                  switch ((sarbazH+i)->jahateharecat)
+                 {
+                 case 1:
+                 (sarbazH+i)->position->x -=(10*sin( (sarbazH+i)->teta));
+                 (sarbazH+i)->position->y +=(10*cos( (sarbazH+i)->teta));
+                     break;
+                 case 2 :
+               //  printf("teta=%lf\n",(sarbazH+i)->teta);
+                 // ezafecos=cos( (sarbazH+i)->teta);
+                  //ezafesin=sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->x +=10*sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y +=10*cos( (sarbazH+i)->teta);
+                // if((double)10*sin( (sarbazH+i)->teta)>0){printf("sinus khoobe\n");}
+               //  if ((double)10*cos( (sarbazH+i)->teta)>0){printf("cosinus khoobe\n");}
+                
+                /// printf("sin=%d cos%d\n",(sarbazH+i)->position->y ,(sarbazH+i)->position->x);
+                 break;
+                 case 3 :
+                 (sarbazH+i)->position->x +=10*sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y -=10*cos( (sarbazH+i)->teta);
+                 break;
+                 case 4 :
+                 (sarbazH+i)->position->x -=10*sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y -=10*cos( (sarbazH+i)->teta);
+                 default:
+                     break;
+                 }
+                  }
+                if(i % 3 == 2){
+                  switch ((sarbazH+i)->jahateharecat)
+                 {
+                 case 1:
+                 (sarbazH+i)->position->x +=(10*sin( (sarbazH+i)->teta));
+                 (sarbazH+i)->position->y -=(10*cos( (sarbazH+i)->teta));
+                     break;
+                 case 2 :
+               //  printf("teta=%lf\n",(sarbazH+i)->teta);
+                 // ezafecos=cos( (sarbazH+i)->teta);
+                  //ezafesin=sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->x -=10*sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y -=10*cos( (sarbazH+i)->teta);
+                 //if((double)10*sin( (sarbazH+i)->teta)>0){printf("sinus khoobe\n");}
+                 //if ((double)10*cos( (sarbazH+i)->teta)>0){printf("cosinus khoobe\n");}
+                
+                // printf("sin=%d cos%d\n",(sarbazH+i)->position->y ,(sarbazH+i)->position->x);
+                 break;
+                 case 3 :
+                 (sarbazH+i)->position->x -=10*sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y +=10*cos( (sarbazH+i)->teta);
+                 break;
+                 case 4 :
+                 (sarbazH+i)->position->x +=10*sin( (sarbazH+i)->teta);
+                 (sarbazH+i)->position->y +=10*cos( (sarbazH+i)->teta);
+                 default:
+                     break;
+                 }
+                  }
+                // printf("(sarbazH+i)->position->y=%d %d\n",(sarbazH+i)->position->y,i);
+                (sarbazH+i)->arm = (SDL_Texture *)malloc(sizeof(SDL_Texture*)*1);
                 (sarbazH+i)->arm = SDL_CreateTextureFromSurface(renderer1,S1);
                 if((sarbazH+i)->arm == NULL){printf("%s",SDL_GetError());}
-               int deltaxCopy = (deltax < 0) ? -deltax: deltax;
-               int deltayCopy = (deltay < 0) ? -deltay : deltay;
-                double tan= (double)deltayCopy/deltaxCopy;
-                printf("%lf\n",tan);
-                (sarbazH+i)->teta= atan(tan);
                 (sarbazH+i)->ison= 2;
+                //printf("i=%d\n",i);
                 //printf("teta=%lf\n",(sarbazH+i)->teta);
         
         }
         }
         void rendersoldiers(int *head)
         {
-            int i=0;
-            
+            int i=*(tedad + *head_tedad-2);
             while(1)
             { 
                 //printf("head=%d\n",*head);
+
              if(sarbazH+i){ SDL_RenderCopy(renderer1,(sarbazH+i)->arm,NULL,(sarbazH+i)->position);
              ++i;
+         //   printf("head :))))=%d i=%d\n",*head,i);
              if((sarbazH+i)->ison != 2){break;}
              if(i >= *head){
+           
                  ++ *head;
+               //  printf("*head=%d\n",*head);
                  if(*head % 3 == 0){break;}
                  else {}
                  }   
@@ -521,9 +586,22 @@
         }*/
          //double ezafecos=0;
         // double ezafesin=0;
+         int *head_sarbazRuHava=(int *)malloc(sizeof(int));
+        *head_sarbazRuHava=0;
+      void filltheblanksarbaz(int i)
+      {
+        for(int j=i;j<*(tedad+ *head_tedad-1);++j)
+        {
+          *(sarbazH+j)=*(sarbazH+j+1);
+        }
+        printf("*(tedad+ *head_tedad-1)=%d\n",*(tedad+ *head_tedad-1));
+       --*(tedad+ *head_tedad-1);
+       -- *head_sarbazRuHava;
+      }
         void continuetomove(int *head)
         {
-             int i=0;
+             int i=*(tedad + *head_tedad-2);
+             
            //  printf("head=%d\n",*head);
             while(1)
             { 
@@ -532,23 +610,23 @@
                
                if(((sarbazH+i)->ison == 2))
                {
-                   printf("j=%d\n",(sarbazH+i)->jahateharecat);
+                // printf("j=%d\n",(sarbazH+i)->jahateharecat);
                  switch ((sarbazH+i)->jahateharecat)
                  {
                  case 1:
                  (sarbazH+i)->position->x +=(10*cos( (sarbazH+i)->teta));
                  (sarbazH+i)->position->y +=(10*sin( (sarbazH+i)->teta));
-                     break;
+                  break;
                  case 2 :
-               //  printf("teta=%lf\n",(sarbazH+i)->teta);
+                 //printf("teta=%lf\n",(sarbazH+i)->teta);
                  // ezafecos=cos( (sarbazH+i)->teta);
-                  //ezafesin=sin( (sarbazH+i)->teta);
+                 //ezafesin=sin( (sarbazH+i)->teta);
                  (sarbazH+i)->position->x -=10*cos( (sarbazH+i)->teta);
                  (sarbazH+i)->position->y +=10*sin( (sarbazH+i)->teta);
-                 if((double)10*sin( (sarbazH+i)->teta)>0){printf("sinus khoobe\n");}
-                 if ((double)10*cos( (sarbazH+i)->teta)>0){printf("cosinus khoobe\n");}
+                 //if((double)10*sin( (sarbazH+i)->teta)>0){printf("sinus khoobe\n");}
+                 //if ((double)10*cos( (sarbazH+i)->teta)>0){printf("cosinus khoobe\n");}
                 
-                 printf("sin=%d cos%d\n",(sarbazH+i)->position->y ,(sarbazH+i)->position->x);
+                // printf("sin=%d cos%d\n",(sarbazH+i)->position->y ,(sarbazH+i)->position->x);
                  break;
                  case 3 :
                  (sarbazH+i)->position->x -=10*cos( (sarbazH+i)->teta);
@@ -559,21 +637,26 @@
                  (sarbazH+i)->position->y -=10*sin( (sarbazH+i)->teta);
                  default:
                      break;
-                 }
+                 }     
+                      
+                  //     printf("i2=%d\n",i);
+              //  if((sarbazH+i)->positionDx != -1)printf("(sarbazH+i)->positionDx=%f\n",(sarbazH+i)->positionDx);
+                // else {printf("-111111111111111111111111\n");}
+                              //   printf("(sarbazH+i)->position->y=%d   (sarbazH+i)->position->x=%d\n",(sarbazH+i)->position->y ,(sarbazH+i)->position->x);
+
                }
-             
-                 /*if( (sarbazH+i)->position->y > (sarbazH+i)->positionDy &&  (sarbazH+i)->position->y < (sarbazH+i)->positionDy+41 &&  (sarbazH+i)->position->x > (sarbazH+i)->positionDx &&  (sarbazH+i)->position->x < (sarbazH+i)->positionDx+34)
-                  {free((sarbazH+i));printf("Yes\n");}*/
+                 if(((sarbazH+i)->ison == 2) &&  (sarbazH+i)->position->y > (sarbazH+i)->positionDy &&   (sarbazH+i)->position->y < (sarbazH+i)->positionDy+81 &&  (sarbazH+i)->position->x > (sarbazH+i)->positionDx && (sarbazH+i)->position->x < (sarbazH+i)->positionDx+80)
+                  {printf("Yes\n"); filltheblanksarbaz(i);}
                   ++i;
                 //  printf("i=%d\n",i);
-               
-                  if(i  >= *head){break;}
+                //   printf("head=%d/\n",*head);
+                  if(i  >= *head){break;} 
+                
                   //if(i  >= 49){break;}
              }
         }
 
-        int *head_sarbazRuHava=(int *)malloc(sizeof(int));
-        *head_sarbazRuHava=0;
+       
 
         TTF_Font *font = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
         if(font == NULL){printf("bia paeen saremon dard geref %s\n",TTF_GetError());}
@@ -592,14 +675,16 @@
         free(c);
         }
         TTF_CloseFont(font);
-
+      ///submit arm and sarbaz positions of paigah///////////////////////////////////
         for(int i=0;i<8;++i)
         { 
                 (paigah+i)->arm = (struct Arm*)malloc(sizeof(struct Arm));
                 (paigah+i)->arm->position = *(arms+i);
                 (paigah+i)->sarbaz->position = *(counter+i);
+               // printf("%f\n",(double)(paigah+i)->arm->position.x);
          
         }
+      ///////////////////////////////////////////////////////////////////////////////  
         void addsoldier(struct paigah* paigah1,int add,SDL_Renderer *renderer)
         {
         TTF_Font *font1 = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
@@ -637,28 +722,38 @@
         void addlocation(int location,struct paigah* paigah)
        {
 
-           for(int i=0;i<(paigah+location)->sarbaz->tedadeshun;++i)
+            if(*(tedad+ *head_tedad-1) >= (sarbazH_size-60)){ sarbazH_size+=200; sarbazH=(struct sarbazRuHava*)realloc(sarbazH,sarbazH_size); if(sarbazH+*(tedad+*head_tedad-1)+1 == NULL)printf("%s",SDL_GetError());}
+            //else {printf("man2\n");}
+           
+           for(int i=*(tedad+ *head_tedad-1);i<(paigah+location)->sarbaz->tedadeshun+*(tedad+ *head_tedad-1);++i)
            {
                        (sarbazH+i)->positionLx=((paigah+location)->arm->position.x)+15;
                        (sarbazH+i)->positionLy=((paigah+location)->arm->position.y)+15;
+                       (sarbazH+i)->positionDx= -1;
 
            }
-
-
-
+              *(tedad+ *head_tedad)=*(tedad+ *head_tedad-1)+((paigah+location)->sarbaz->tedadeshun);
+           //    printf("*(tedad+ *head_tedad)=%d sarbazh_size=%d\n",*(tedad+ *head_tedad),sarbazH_size-40);
+              
+              ++ *head_tedad;
+            //  printf("*(tedad+ *head_tedad-1) loc=%d\n",*(tedad+ *head_tedad-1));
+             
 
        }
         void add_destination(int destination,struct paigah* paigah)
        {
 
-           for(int i=0;i<(paigah+destination)->sarbaz->tedadeshun;++i)
+          //   printf("*(tedad+ *head_tedad-1) dest=%d\n",*(tedad+ *head_tedad-1));
+           for(int i=*(tedad+ *head_tedad-2);i<(paigah+destination)->sarbaz->tedadeshun+ *(tedad+ *head_tedad-2);++i)
            {
            /*    if(i == 7){
                        (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x));
                        (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y));
                }*/
-                       (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x)+15);
-                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y)+20);
+                //       printf("added dest\n");
+                        printf("i1=%d\n",i);
+                       (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x));
+                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y));
 
            }
 
@@ -669,7 +764,5 @@
         {
             (paigah+i)->position.x=(position_paigah+i)->x;
             (paigah+i)->position.y=(position_paigah+i)->y;
-            printf("xpostion=%d yposition=%d \n",(paigah+i)->position.x=(position_paigah+i)->x,(paigah+i)->position.y=(position_paigah+i)->y);
+          //  printf("xpostion=%d yposition=%d \n",(paigah+i)->position.x=(position_paigah+i)->x,(paigah+i)->position.y=(position_paigah+i)->y);
         }
-       
-        

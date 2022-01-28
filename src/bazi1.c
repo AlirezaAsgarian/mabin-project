@@ -53,7 +53,6 @@
         }
            isset=0;
        }
-       
        }
 
         
@@ -398,10 +397,11 @@
         //if((paigah+2)->sarbaz->tedad == NULL){printf("noooooooooo\n");}
 //        if((paigah+2)->sarbaz->position == &c13){printf("qqqqqq\n");}
       //  SDL_RenderCopy(renderer1,(paigah+2)->sarbaz->tedad,NULL,&((paigah+2)->sarbaz->position));
-        
+            
         
         rendersoldiers(head_sarbazRuHava);
         continuetomove(head_sarbazRuHava);
+        printf("headsarbazruhaba=%d\n",*head_sarbazRuHava);
         
         SDL_RenderPresent(renderer1);
         
