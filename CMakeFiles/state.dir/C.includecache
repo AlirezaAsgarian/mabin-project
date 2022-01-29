@@ -33,6 +33,8 @@ stdlib.h
 -
 time.h
 -
+string.h
+-
 /home/alireza/state.io/src/naghshe1.c
 -
 /home/alireza/state.io/src/mouse settings.c

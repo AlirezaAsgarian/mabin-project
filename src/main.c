@@ -8,6 +8,7 @@
 #include <SDL2/SDL_ttf.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
 enum window{menu,select_naghse,tasadof,bazi1,bazi2,bazi3,bazi4};
 int cmp(const void *a,const void *b)
 {

@@ -55,7 +55,8 @@ else if(iswindow == bazi1+20)
               printf("moveforward\n");
               add_destination(0,paigah);
               printf("dy=%d d2%d\n",((paigah)->arm->position.y , (paigah+location)->arm->position.y));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah)->arm->position.y - (paigah+location)->arm->position.y),((paigah)->arm->position.x - (paigah+location)->arm->position.x));
+              //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah)->arm->position.y - (paigah+location)->arm->position.y),((paigah)->arm->position.x - (paigah+location)->arm->position.x));
+              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
               rendersoldiers(head_sarbazRuHava);
               is_destination=0;}
               else
@@ -92,7 +93,8 @@ else if(iswindow == bazi1+20)
               if(!is_move){
               printf("moveforward\n");
               add_destination(1,paigah);
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+1)->arm->position.y) - ((paigah+location)->arm->position.y),((paigah+1)->arm->position.x - (paigah+location)->arm->position.x));
+              //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+1)->arm->position.y) - ((paigah+location)->arm->position.y),((paigah+1)->arm->position.x - (paigah+location)->arm->position.x));
+               addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
                is_destination=0;
                rendersoldiers(head_sarbazRuHava);
                }
@@ -126,7 +128,8 @@ else if(iswindow == bazi1+20)
               if(!is_move){
                 add_destination(2,paigah);
               printf("moveforward\n");
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+2)->arm->position.y - (paigah+location)->arm->position.y),((paigah+2)->arm->position.x - (paigah+location)->arm->position.x));
+              //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+2)->arm->position.y - (paigah+location)->arm->position.y),((paigah+2)->arm->position.x - (paigah+location)->arm->position.x));
+               addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
                is_destination=0;
                rendersoldiers(head_sarbazRuHava);
                }
@@ -162,7 +165,8 @@ else if(iswindow == bazi1+20)
               if(!is_move){
               printf("moveforward\n");
               add_destination(3,paigah);
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+3)->arm->position.y - (paigah+location)->arm->position.y),((paigah+3)->arm->position.x - (paigah+location)->arm->position.x));
+              //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+3)->arm->position.y - (paigah+location)->arm->position.y),((paigah+3)->arm->position.x - (paigah+location)->arm->position.x));
+              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
               is_destination=0;
               rendersoldiers(head_sarbazRuHava);
               }
@@ -196,7 +200,8 @@ else if(iswindow == bazi1+20)
               if(!is_move){
               printf("moveforward\n");
               add_destination(4,paigah);
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+4)->arm->position.y - (paigah+location)->arm->position.y),((paigah+4)->arm->position.x - (paigah+location)->arm->position.x));
+             // addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+4)->arm->position.y - (paigah+location)->arm->position.y),((paigah+4)->arm->position.x - (paigah+location)->arm->position.x));
+               addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
                is_destination=0;
                rendersoldiers(head_sarbazRuHava);
                }
@@ -229,7 +234,8 @@ else if(iswindow == bazi1+20)
               if(!is_move){
                 add_destination(5,paigah);
               printf("moveforward\n");
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+5)->arm->position.y - (paigah+location)->arm->position.y),((paigah+5)->arm->position.x - (paigah+location)->arm->position.x));
+             // addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+5)->arm->position.y - (paigah+location)->arm->position.y),((paigah+5)->arm->position.x - (paigah+location)->arm->position.x));
+               addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
                is_destination=0;
                rendersoldiers(head_sarbazRuHava);
               }
@@ -262,7 +268,8 @@ else if(iswindow == bazi1+20)
               if(!is_move){
               printf("moveforward\n");
               add_destination(6,paigah);
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+6)->arm->position.y - (paigah+location)->arm->position.y),((paigah+6)->arm->position.x - (paigah+location)->arm->position.x));
+              //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+6)->arm->position.y - (paigah+location)->arm->position.y),((paigah+6)->arm->position.x - (paigah+location)->arm->position.x));
+              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
                is_destination=0;
                rendersoldiers(head_sarbazRuHava);
               }
@@ -297,7 +304,8 @@ else if(iswindow == bazi1+20)
               printf("moveforward\n");
               add_destination(7,paigah);
               //printf("((paigah+7)->arm->position.y - (paigah+location)->arm->position.y)=%d ((paigah+7)->arm->position.x - (paigah+location)->arm->position.x=%d\n)) ",((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
+              //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
+               addSarbazRuHava((paigah+location)->sarbaz->tedadeshun);
                is_destination=0;
                rendersoldiers(head_sarbazRuHava);
               }

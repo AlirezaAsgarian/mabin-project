@@ -49,7 +49,7 @@
                else if((paigah+i)->user == 1){(paigah+i)->arm->armt= *(armsT+1);}
                else if((paigah+i)->user == 2){(paigah+i)->arm->armt= *(armsT+2);}
                else{(paigah+i)->arm->armt= *(armsT+3);}
-                
+               
         }
            isset=0;
        }
@@ -401,7 +401,7 @@
         
         rendersoldiers(head_sarbazRuHava);
         continuetomove(head_sarbazRuHava);
-        printf("headsarbazruhaba=%d\n",*head_sarbazRuHava);
+       // printf("headsarbazruhaba=%d\n",*head_sarbazRuHava);
         
         SDL_RenderPresent(renderer1);
         
