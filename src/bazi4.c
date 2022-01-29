@@ -1,7 +1,7 @@
 int ratio=13;
 int biajolo= -144;
 int biabala= 280;
-
+  SDL_RenderClear(renderer1);
         SDL_Rect t16;
         t16.x = 176*ratio/10+biajolo; t16.y=262*ratio/10-biabala; t16.w=128*ratio/10; t16.h=174*ratio/10;
         SDL_Rect t110;

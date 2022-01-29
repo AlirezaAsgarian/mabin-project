@@ -14,6 +14,8 @@
 
 /home/alireza/state.io/src/bazi4.c
 
+/home/alireza/state.io/src/harifAI1.c
+
 /home/alireza/state.io/src/main.c
 stdio.h
 -
@@ -29,9 +31,13 @@ SDL2/SDL_image.h
 -
 SDL2/SDL_ttf.h
 -
+SDL_events.h
+-
 stdlib.h
 -
 time.h
+-
+string.h
 -
 /home/alireza/state.io/src/naghshe1.c
 -
@@ -41,6 +47,8 @@ time.h
 -
 /home/alireza/state.io/src/bazi1.c
 -
+/home/alireza/state.io/src/harifAI1.c
+-
 /home/alireza/state.io/src/bazi2.c
 -
 /home/alireza/state.io/src/bazi3.c
@@ -48,6 +56,10 @@ time.h
 /home/alireza/state.io/src/bazi4.c
 -
 /home/alireza/state.io/src/select_naghse.c
+-
+/home/alireza/state.io/src/tasafof.c
+-
+/home/alireza/state.io/src/tasadof_AI.c
 -
 
 /home/alireza/state.io/src/mouse settings.c
@@ -57,6 +69,10 @@ time.h
 /home/alireza/state.io/src/naghshe11.c
 
 /home/alireza/state.io/src/select_naghse.c
+
+/home/alireza/state.io/src/tasadof_AI.c
+
+/home/alireza/state.io/src/tasafof.c
 
 /usr/include/SDL2/SDL.h
 SDL_main.h

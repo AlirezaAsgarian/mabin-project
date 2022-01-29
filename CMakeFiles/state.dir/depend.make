@@ -5,11 +5,14 @@ CMakeFiles/state.dir/src/main.c.o: src/bazi1.c
 CMakeFiles/state.dir/src/main.c.o: src/bazi2.c
 CMakeFiles/state.dir/src/main.c.o: src/bazi3.c
 CMakeFiles/state.dir/src/main.c.o: src/bazi4.c
+CMakeFiles/state.dir/src/main.c.o: src/harifAI1.c
 CMakeFiles/state.dir/src/main.c.o: src/main.c
 CMakeFiles/state.dir/src/main.c.o: src/mouse\ settings.c
 CMakeFiles/state.dir/src/main.c.o: src/naghshe1.c
 CMakeFiles/state.dir/src/main.c.o: src/naghshe11.c
 CMakeFiles/state.dir/src/main.c.o: src/select_naghse.c
+CMakeFiles/state.dir/src/main.c.o: src/tasadof_AI.c
+CMakeFiles/state.dir/src/main.c.o: src/tasafof.c
 CMakeFiles/state.dir/src/main.c.o: /usr/include/SDL2/SDL.h
 CMakeFiles/state.dir/src/main.c.o: /usr/include/SDL2/SDL_assert.h
 CMakeFiles/state.dir/src/main.c.o: /usr/include/SDL2/SDL_atomic.h

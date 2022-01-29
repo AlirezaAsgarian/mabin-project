@@ -1,6 +1,6 @@
 
 
-
+ SDL_RenderClear(renderer1);
 
     SDL_Surface *n1 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/نقشه 1.png");
     SDL_Surface *n2 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/نقشه 2.png");
@@ -10,21 +10,24 @@
     SDL_Surface *b2 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/b2.jpeg");
     SDL_Surface *b3 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/b3.jpeg");
     SDL_Surface *b4 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/b4.jpeg");
-    SDL_Surface *naghshe[]={n1,n2,n3,n4};
-    SDL_Surface *bu[]={b1,b2,b3,b4};
+    SDL_Surface *naghshe=(SDL_Surface*)malloc(sizeof(SDL_Surface)*4);
+    SDL_Surface *bu=(SDL_Surface*)malloc(sizeof(SDL_Surface)*4);
+    *(naghshe)=*n1; *(naghshe+1)=*n2; *(naghshe+2)=*n3; *(naghshe+3)=*n4;
+   //printf("heeeeeeeeeeeeeeeeeeeeeeaaaaaaaay\n");
+    *(bu)=*b1; (*(bu+1))=*b2;  (*(bu+2))=*b3; (*(bu+3))=*b4;
     SDL_Texture **whichn =(SDL_Texture **)malloc(4*sizeof(SDL_Texture*));
      for(int i=0;i<4;++i)
      {
              *(whichn+i) = (SDL_Texture *)malloc(sizeof(SDL_Texture*));
-             *(whichn+i)= SDL_CreateTextureFromSurface(renderer1,naghshe[i]);
+             *(whichn+i)= SDL_CreateTextureFromSurface(renderer1,&naghshe[i]);
              if(*(whichn+i) == NULL){printf("can't %s",SDL_GetError());}
      }
      SDL_Texture **buT =(SDL_Texture **)malloc(4*sizeof(SDL_Texture*));
      for(int i=0;i<4;++i)
      {
              *(buT+i) = (SDL_Texture *)malloc(sizeof(SDL_Texture*));
-             *(buT+i)= SDL_CreateTextureFromSurface(renderer1,bu[i]);
-             if(*(bu+i) == NULL){printf("can't %s",SDL_GetError());}
+             *(buT+i)= SDL_CreateTextureFromSurface(renderer1,(bu+i));
+             if((bu+i) == NULL){printf("can't %s",SDL_GetError());}
      }
         SDL_FreeSurface(n1);
         SDL_FreeSurface(n2);
@@ -87,10 +90,12 @@
            SDL_RenderCopy(renderer1,*(buT+3),NULL,&b4r);
            
           SDL_RenderPresent(renderer1);
+        printf("hello\n");
         for(int i=0;i<4;++i)
        {
     SDL_DestroyTexture(*(buT+i));
     SDL_DestroyTexture(*(whichn+i));
         }
     
-     
+    SDL_RenderPresent(renderer1);
+     printf("yes\n");

@@ -6,11 +6,14 @@ CMakeFiles/state.dir/src/main.c.o
  /home/alireza/state.io/src/bazi2.c
  /home/alireza/state.io/src/bazi3.c
  /home/alireza/state.io/src/bazi4.c
+ /home/alireza/state.io/src/harifAI1.c
  /home/alireza/state.io/src/main.c
  /home/alireza/state.io/src/mouse settings.c
  /home/alireza/state.io/src/naghshe1.c
  /home/alireza/state.io/src/naghshe11.c
  /home/alireza/state.io/src/select_naghse.c
+ /home/alireza/state.io/src/tasadof_AI.c
+ /home/alireza/state.io/src/tasafof.c
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h

@@ -2,6 +2,13 @@
     "files.associations": {
         "sdl_image.h": "c",
         "stdbool.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "array": "c",
+        "deque": "c",
+        "vector": "c",
+        "string_view": "c",
+        "random": "c",
+        "sdl_ttf.h": "c",
+        "iterator": "c"
     }
 }
