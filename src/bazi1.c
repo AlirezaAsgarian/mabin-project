@@ -6,7 +6,7 @@
        
        if(isset)
        {
-       
+       printf("hello\n");
        if(tedadeharif == 1)
        {
         
@@ -51,9 +51,65 @@
                else{(paigah+i)->arm->armt= *(armsT+3);}
                
         }
+        printf("hello");
+        
+        
+        }
            isset=0;
+       if(font == NULL){printf("bia paeen saremon dard geref %s\n",TTF_GetError());}
+        for(int i=0;i<8;++i)
+        {
+        if((paigah+i)->user == 0){(paigah+i)->sarbaz->tedadeshun=40;}
+        else{(paigah+i)->sarbaz->tedadeshun=50;}
+        char *c=(char *)malloc(sizeof(char)*10);
+        sprintf(c,"%d",(paigah+i)->sarbaz->tedadeshun);
+        SDL_Color color = {0,255,0,255};
+        SDL_Surface *text = TTF_RenderText_Solid(font,c,color);
+        (paigah+i)->sarbaz->tedad=SDL_CreateTextureFromSurface(renderer1,text);
+        free(text);
+        free(c);
+       //////////////////tedade harifan/////////////////////////////////////////////////////
+        
+        int k[10]={0}; 
+        int *counter=(int *)malloc(sizeof(int));
+        int j=0;
+        *counter=0;
+        //printf("paigah+j=%d",(paigah+j)->user);
+        while(j != 8)
+        {
+        if(((paigah+j)->user)>1){k[j]+=1; if(k[j] == 1){++*counter;}}
+         ++j;
+        }
+         teamh=(struct TeamH*)malloc((*counter+1)*sizeof(struct TeamH));
+        (teamh+ *counter)->tedadekol= -1;
+        printf("counter=%d\n",*counter); 
+        free(counter);
+        ////////////////////////////////////////////////////////////////////////////////////
        }
+       TTF_CloseFont(font);
        }
+        //////////////////tedade harifan//////////////////////////////////////////////////// 
+        /*
+        {
+        int k[10]={0}; 
+        int *counter=(int *)malloc(sizeof(int));
+        int j=0;
+        *counter=0;
+        //printf("paigah+j=%d",(paigah+j)->user);
+        while(j != 8)
+        {
+        if(((paigah+j)->user)>1){k[j]+=1; if(k[j] == 1){++*counter;}}
+         ++j;
+        }
+        struct TeamH *teamh=(struct TeamH*)malloc((*counter)*sizeof(struct TeamH));
+        printf("counter=%d\n",*counter); 
+        free(counter);
+        }
+        */ ///////////////////////////////////////////////////////////////////////////////////
+       
+     
+   
+          
 
         
         
@@ -65,6 +121,7 @@
                else{(paigah+i)->arm->armt= *(armsT+1);}
                 
         }*/
+        
 
 
 
@@ -123,7 +180,7 @@
         *(arms+7)=r18;*/
         
        // minussoldier(((paigah+2)),4,renderer1);
-        
+         //printf("hello\n"); 
         
         
         
@@ -382,7 +439,35 @@
         default:
                 break;
         }
-      
+     
+     if(counter_Time %90 == 0)
+     {
+     int *i=(int *)malloc(sizeof(int));
+     *i=0;
+      while(*i != 8)
+      {
+         if((paigah+ *i)->user == 0)
+         {
+             ++ *i;
+         }
+         else 
+         {
+                 if((paigah+*i)->sarbaz->tedadeshun < 50)
+                 {
+                    if(50-(paigah+*i)->sarbaz->tedadeshun<5)
+                    {
+                            addsoldier(((paigah+ *i)),50-(paigah+ *i)->sarbaz->tedadeshun,renderer1);
+                    }
+                    else 
+                    {
+                       addsoldier(((paigah+ *i)),5,renderer1);       
+                    }
+                 }
+                ++ *i;
+         }
+      }
+      free(i);
+      }
        //SDL_RenderCopy(renderer1,message,NULL,&c11);
 
         /*SDL_RenderCopy(renderer1,te1,NULL,&t11);
@@ -402,7 +487,7 @@
         rendersoldiers(head_sarbazRuHava);
         continuetomove(head_sarbazRuHava);
        // printf("headsarbazruhaba=%d\n",*head_sarbazRuHava);
+        //if(isset-1){free(queue);printf("freed");}
         
-        SDL_RenderPresent(renderer1);
         
       

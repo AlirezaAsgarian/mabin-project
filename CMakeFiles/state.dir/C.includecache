@@ -14,6 +14,8 @@
 
 /home/alireza/state.io/src/bazi4.c
 
+/home/alireza/state.io/src/harifAI1.c
+
 /home/alireza/state.io/src/main.c
 stdio.h
 -
@@ -42,6 +44,8 @@ string.h
 /home/alireza/state.io/src/naghshe11.c
 -
 /home/alireza/state.io/src/bazi1.c
+-
+/home/alireza/state.io/src/harifAI1.c
 -
 /home/alireza/state.io/src/bazi2.c
 -

@@ -49,7 +49,7 @@ int main(int argc, char ** argv)
      SDL_SetRenderDrawColor(renderer2,255,0,0,255);
      
 
- int fpm= 60;
+ int fpm= 24;
 
  int isset=1;
  int tedadeharif= rand()%2+1;
@@ -89,10 +89,13 @@ int iswindow= select_naghse+8;
        
       
        
-        if(iswindow == -1){
+        if(iswindow == -1)
+        {
           #include</home/alireza/state.io/src/naghshe11.c> 
-          SDL_RenderPresent(renderer1);}
-        else if(iswindow == -2 ) { 
+          SDL_RenderPresent(renderer1);
+          }
+        else if(iswindow == -2) 
+        { 
 
         for(int i=0;i<tedad1;++i)
         {
@@ -100,9 +103,10 @@ int iswindow= select_naghse+8;
         }
         SDL_RenderPresent(renderer1);
         }
-       else if(iswindow == bazi1+20)
+        else if(iswindow == bazi1+20)
         {
           #include</home/alireza/state.io/src/bazi1.c>
+          #include</home/alireza/state.io/src/harifAI1.c>
         }
         else if(iswindow == bazi2+20)
         {
@@ -125,7 +129,6 @@ int iswindow= select_naghse+8;
         {
           SDL_RenderClear(renderer2); 
           SDL_RenderPresent(renderer2);
-
         }
         ++counter_Time;
         if(counter_Time>60){counter_Time=0;}        

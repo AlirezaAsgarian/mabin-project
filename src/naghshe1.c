@@ -2,6 +2,7 @@
 
    int is_destination=0;
    int location=0;
+   
    //load parts of naghshe
     SDL_Surface *image = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/nagshe2.png");
     SDL_Surface *t1 = IMG_Load("/home/alireza/state.io/src/نقشه ها/نقشه 1/تکه 1/white2.png");
@@ -337,6 +338,7 @@
         {
             SDL_Rect position;
             int tedadeshun;
+            int tedadeshunCopy;
             SDL_Texture *tedad;
         };
         struct paigah{
@@ -345,13 +347,20 @@
         SDL_Texture *color;
         struct Arm *arm;
         struct Sarbaz *sarbaz;
+        int toolesh;
+        int hamsaye[];
         };
+        struct TeamH
+        {
+          int tedadekol;
+          int shomare_paigah_ba_bishtarin_tedad;
+        };
+        struct TeamH *teamh;
         struct paigah* paigah=( struct paigah*)malloc(sizeof(struct paigah)*8);
         int ratio=13;
         int ratio1=4;
         int biajolo=229;
         int biabala=30;
-     
         SDL_Rect *arms=(SDL_Rect *)malloc(sizeof(SDL_Rect)*8);
         SDL_Rect *counter=(SDL_Rect *)malloc(sizeof(SDL_Rect)*8);
         SDL_Rect *position_paigah=(SDL_Rect *)malloc(sizeof(SDL_Rect *)*8);
@@ -448,6 +457,7 @@
           SDL_Texture *arm;
           int ison;
           int tedadeshun;
+        
         };
         int sarbazH_size=400;
         struct sarbazRuHava* sarbazH = (struct sarbazRuHava*)malloc(sizeof(struct sarbazRuHava)*sarbazH_size);
@@ -460,8 +470,10 @@
         {
           double deltay; 
           double deltax;
+        //  printf("*(tedad+*head_tedad-1)=%d\n",*(tedad+*head_tedad-1));
             for(int i= *(tedad+ *head_tedad-2);i<*(tedad+*head_tedad-1);++i)
             {
+              
               // printf("i=%d\n",i);
                deltay=(sarbazH+i)->positionDy - (sarbazH+i)->positionLy;
                deltax=(sarbazH+i)->positionDx - (sarbazH+i)->positionLx;
@@ -550,11 +562,13 @@
             int i=*(tedad + *head_tedad-2);
             //<printf("balebale\n");
              static  int counter=1;
+         if( *head_sarbazRuHava != 0)printf("headsarbazruhav=%d\n", *head_sarbazRuHava);
             while(1)
             { 
            
              if((sarbazH+i)){
-               if(!(sarbazH+i)->arm){printf("%s",SDL_GetError());}
+            // if((sarbazH+i)->loc == -1 && (sarbazH+i)->ison == 2){(sarbazH+i)->loc=(sarbazH+i-1)->loc;}
+           //   printf("(sarbazH+i)->location=%d\n",(sarbazH+i)->loc);
               SDL_RenderCopy(renderer1,(sarbazH+i)->arm,NULL,(sarbazH+i)->position);  
            //  printf("counter=%d i=%d\n",counter,i);
              ++i;
@@ -589,16 +603,18 @@
         void minussoldier(struct paigah* paigah1,int add,SDL_Renderer *renderer,int i)
         {
         //printf("paigah=%p\n",paigah1);
+        static int counter=1;
         if((paigah1)->sarbaz->tedadeshun>0)
         {
         TTF_Font *font1 = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
         (paigah1)->sarbaz->tedadeshun-=add;
-        printf("tedad=%d\n",(paigah1)->sarbaz->tedadeshun);
+      //  printf("counter1=%d (paigah1)->sarbaz->tedadeshun\n",counter);
+       // printf("tedad=%d\n",(paigah1)->sarbaz->tedadeshun);
         char *c=(char *)malloc(sizeof(char)*10);
         sprintf(c,"%d",(paigah1)->sarbaz->tedadeshun);
-      printf("(sarbazH+i)->user=%d\n",(sarbazH+i)->user);
+     // printf("(sarbazH+i)->user=%d\n",(sarbazH+i)->user);
         SDL_Color color = {0,255,0,255};
-      
+        
         SDL_Surface *text = TTF_RenderText_Solid(font1,c,color);
        
         if(text == NULL){printf("%s\n",TTF_GetError());}
@@ -606,12 +622,12 @@
         free(text); free(c); TTF_CloseFont(font1);
         }
         else{
-         TTF_Font *font1 = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
-         (paigah1)->user=(sarbazH+i)->user;
-         (paigah1)->arm->armt= *(armsT+(sarbazH+i)->user);
-         
+        TTF_Font *font1 = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
+        (paigah1)->user=(sarbazH+i)->user;
+        (paigah1)->arm->armt= *(armsT+(sarbazH+i)->user);
+       // printf("counter21=%d\n",counter);
         (paigah1)->sarbaz->tedadeshun=1;
-        printf("tedad=%d\n",(paigah1)->sarbaz->tedadeshun);
+      //  printf("tedad=%d\n",(paigah1)->sarbaz->tedadeshun);
         char *c=(char *)malloc(sizeof(char)*10);
         sprintf(c,"%d",(paigah1)->sarbaz->tedadeshun);
       
@@ -623,11 +639,12 @@
         (paigah1)->sarbaz->tedad=SDL_CreateTextureFromSurface(renderer,text);
         free(text); free(c); TTF_CloseFont(font1);
         }
+        ++counter;
         }        
       void filltheblanksarbaz(int i)
       {
-        int j;
-        printf("(sarbazH+i)->dest)=%d    (paigah+ (sarbazH+i)->dest)->user=%d  (sarbazH+i)->user=%d\n",(sarbazH+i)->dest,(paigah+ (sarbazH+i)->dest)->user,(sarbazH+i)->user);
+    
+        //printf("(sarbazH+i)->dest)=%d    (paigah+ (sarbazH+i)->dest)->user=%d  (sarbazH+i)->user=%d\n",(sarbazH+i)->dest,(paigah+ (sarbazH+i)->dest)->user,(sarbazH+i)->user);
           if((sarbazH+i)->user == (paigah+ (sarbazH+i)->dest)->user)
           {
             addsoldier(((paigah+ (sarbazH+i)->dest)),1,renderer1);
@@ -637,23 +654,29 @@
              minussoldier(((paigah+ (sarbazH+i)->dest)),1,renderer1,i);
           }
 
+      //  printf("i=%d\n",i); 
+         int j;
 
-        for( j=i;j< *head_sarbazRuHava-1;++j)
+        for( j=i;j< *(tedad+ *head_tedad-1);++j)
         {
-        // printf("j=%d\n",j);
-        *(sarbazH+j)=*(sarbazH+j+1);
+       //  printf("j+1=%d\n",j);
+        if(j == *(tedad+ *head_tedad-1)-1){SDL_DestroyTexture((sarbazH+j)->arm); (sarbazH+j)->position ==NULL; /*(sarbazH+j)->loc= -1;*/  (sarbazH+j)->ison=0;  break;}
+        *(sarbazH+j) = *(sarbazH+j+1);
+       
         }
-       SDL_DestroyTexture((sarbazH+j-1)->arm);   /*free((sarbazH+j-1)->position);*/  (sarbazH+j-1)->position ==NULL; 
+      //  SDL_DestroyTexture((sarbazH+j-1)->arm);   /*free((sarbazH+j-1)->position);*/  (sarbazH+j-1)->position ==NULL; 
        //    memcpy((sarbazH+j-1),NULL,sizeof(struct sarbazRuHava));
-        (sarbazH+j-1)->ison=0;
-        if(*(tedad+ *head_tedad-1)>0){--*(tedad+ *head_tedad-1);}
+      //  (sarbazH+j-1)->ison=0;
+        --*(tedad+ *head_tedad-1);
         if(*head_sarbazRuHava>0){--*head_sarbazRuHava;}
 
              
 
 
     //   printf("*head_sarbazRuHava=%d *(tedad+ *head_tedad-1)=%d\n",*head_sarbazRuHava,*(tedad+ *head_tedad-1));
+      
       }
+      printf("yes\n");
         void continuetomove(int *head)
         {
              int i=*(tedad + *head_tedad-2);
@@ -662,7 +685,8 @@
            ++indexofFrees;
             while(1)
             {  
-              if( (sarbazH+i)->kamkardan_az_maghsad==1){minussoldier((paigah+ (sarbazH+i)->loc),1,renderer1,i); (sarbazH+i)->kamkardan_az_maghsad=0;}
+              static int counter=0;
+              if( (sarbazH+i)->kamkardan_az_maghsad==1){minussoldier((paigah+ (sarbazH+i)->loc),1,renderer1,i);  ++counter; (sarbazH+i)->kamkardan_az_maghsad=0;}
 
                if(((sarbazH+i)->ison == 2))
                {
@@ -693,11 +717,12 @@
                 
                   if(i  >= *head){break;} 
              }
-
-           if(*head_sarbazRuHava != 0){
+           //printf("tedad-1=%d\n",*(tedad+ *head_tedad-1));
+           if(*head_sarbazRuHava != 0 ){
             --indexofFrees;
            while (*(indexofFrees) != -1)
            {
+        //     printf("indexfree=%d\n",*(indexofFrees));
              filltheblanksarbaz(*indexofFrees);
              --indexofFrees;
            }
@@ -709,31 +734,18 @@
 
        
 
-        TTF_Font *font = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
-        if(font == NULL){printf("bia paeen saremon dard geref %s\n",TTF_GetError());}
-        for(int i=0;i<8;++i)
-        {
-        (paigah+i)->sarbaz = (struct Sarbaz*)malloc(sizeof(struct Sarbaz));
-        (paigah+i)->sarbaz->tedadeshun=50;
-        char *c=(char *)malloc(sizeof(char)*10);
-        sprintf(c,"%d",(paigah+i)->sarbaz->tedadeshun);
-        SDL_Color color = {0,255,0,255};
-        SDL_Surface *text = TTF_RenderText_Solid(font,c,color);
-       
-        (paigah+i)->sarbaz->tedad=SDL_CreateTextureFromSurface(renderer1,text);
-       
-        free(text);
-        free(c);
-        }
-        TTF_CloseFont(font);
+
       ///submit arm and sarbaz positions of paigah///////////////////////////////////
+        TTF_Font *font = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
         for(int i=0;i<8;++i)
         { 
+                (paigah+i)->sarbaz = (struct Sarbaz*)malloc(sizeof(struct Sarbaz));
                 (paigah+i)->arm = (struct Arm*)malloc(sizeof(struct Arm));
                 (paigah+i)->arm->position = *(arms+i);
                 (paigah+i)->sarbaz->position = *(counter+i);
 
         }
+        printf("second yes\n");
       ///////////////////////////////////////////////////////////////////////////////  
         
       ////////////////////add location or destination fo soldiers /////////////////////////////////////////
@@ -745,33 +757,34 @@
            
            for(int i=*(tedad+ *head_tedad-1);i<(paigah+location)->sarbaz->tedadeshun+*(tedad+ *head_tedad-1);++i)
            {
-             if(location==0)
+             /*if(location==0)
               {
                        (sarbazH+i)->positionLx=(double)(((paigah+location)->arm->position.x)-10);
                        (sarbazH+i)->positionLy=(double)(((paigah+location)->arm->position.y)-10);
                       // (sarbazH+i)->positionDx= -1;
 
-               }
-               
+               }*/
+                
                       
                        (sarbazH+i)->positionLx=(double)((double)((paigah+location)->arm->position.x)+(double)(((paigah+location)->arm->position.w)/2));
                        (sarbazH+i)->positionLy=(double)((double)((paigah+location)->arm->position.y)+(double)(((paigah+location)->arm->position.h)/2));
                        //(sarbazH+i)->positionDx= -1;
-                         (sarbazH+i)->kamkardan_az_maghsad=0;
-                        (sarbazH+i)->user=(paigah+location)->user;
-                        (sarbazH+i)->loc=location;
-             //  printf(" primierly (sarbazH+i)->positionLy=%f  (sarbazH+i)->positionLx=%f\n", (sarbazH+i)->positionLy,(sarbazH+i)->positionLx);
+                       (sarbazH+i)->kamkardan_az_maghsad=0;
+                       (sarbazH+i)->user=(paigah+location)->user;
+                       (sarbazH+i)->loc=location;
+          //              printf("i=%d\n",i);
+                        printf("location=%d  %d tedad=%d\n",(sarbazH+i)->loc,i,(paigah+location)->sarbaz->tedadeshun);
            }
-            
-          
+          (paigah+location)->sarbaz->tedadeshunCopy=(paigah+location)->sarbaz->tedadeshun;
+          printf("yes\n");
              
 
        }
         void add_destination(int destination,struct paigah* paigah)
        {
 
-            printf("*head sarbazRuHava=%d\n",*(head_sarbazRuHava));
-           for(int i=*(tedad+ *head_tedad-1);i<(paigah+destination)->sarbaz->tedadeshun+ *(tedad+ *head_tedad-1);++i)
+        //    printf("*head sarbazRuHava=%d\n",*(head_sarbazRuHava));
+           for(int i=*(tedad+ *head_tedad-1);i<(paigah+ (sarbazH)->loc)->sarbaz->tedadeshunCopy+ *(tedad+ *head_tedad-1);++i)
            {
                if(destination == 5 && (sarbazH+i)->positionLx==(double)((double)((paigah)->arm->position.x)+(double)(((paigah)->arm->position.w)/2)))
                {
@@ -782,6 +795,7 @@
                        (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y));
                        (sarbazH+i)->dest=destination;
                        (sarbazH+i)->kamkardan_az_maghsad=1;
+                       printf("*dest=%d %d\n",(sarbazH+i)->dest,i);
                        continue;
                }
                else if(destination == 0 && (sarbazH+i)->positionLx==(double)((double)((paigah+7)->arm->position.x)+(double)(((paigah+7)->arm->position.w)/2)))
@@ -790,25 +804,53 @@
                         (sarbazH+i)->positionArmDx=(double)((paigah+destination)->arm->position.x);
                        (sarbazH+i)->positionArmDy=(double)(((paigah+destination)->arm->position.y));
                        (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x));
-                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y)+8);
+                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y)+12);
                        (sarbazH+i)->dest=destination;
                        (sarbazH+i)->kamkardan_az_maghsad=1;
+                       printf(" *dest=%d %d\n",(sarbazH+i)->dest,i);
                        continue;
                }
               else if(destination == 7 && (sarbazH+i)->positionLx==(double)((double)((paigah)->arm->position.x)+(double)(((paigah)->arm->position.w)/2)))
                {
-                        //printf("salamaleikom3");
+               //         printf("salamaleikom3");
                         (sarbazH+i)->positionArmDx=(double)((paigah+destination)->arm->position.x);
                        (sarbazH+i)->positionArmDy=(double)(((paigah+destination)->arm->position.y));
                        (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x));
                        (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y)+8);
                        (sarbazH+i)->dest=destination;
                        (sarbazH+i)->kamkardan_az_maghsad=1;
+                       printf(" *dest=%d %d\n",(sarbazH+i)->dest,i);
                        continue;
 
 
                }
-                //       printf("added dest\n");
+             else if(destination == 6 && (sarbazH+i)->positionLx==(double)((double)((paigah+2)->arm->position.x)+(double)(((paigah+2)->arm->position.w)/2)))
+             {
+               printf("hello7\n");
+                       (sarbazH+i)->positionArmDx=(double)((paigah+destination)->arm->position.x);
+                       (sarbazH+i)->positionArmDy=(double)(((paigah+destination)->arm->position.y));
+                       (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x)+80);
+                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y));
+                       (sarbazH+i)->dest=destination;
+                       (sarbazH+i)->kamkardan_az_maghsad=1;
+                       printf(" *dest=%d %d\n",(sarbazH+i)->dest,i);
+                       continue;
+             }
+             else if(destination == 3 && (sarbazH+i)->positionLx==(double)((double)((paigah+2)->arm->position.x)+(double)(((paigah+2)->arm->position.w)/2)))
+             {
+                 printf("hello4\n"); 
+                       (sarbazH+i)->positionArmDx=(double)((paigah+destination)->arm->position.x);
+                       (sarbazH+i)->positionArmDy=(double)(((paigah+destination)->arm->position.y));
+                       (sarbazH+i)->positionDx=(double)(((paigah+destination)->arm->position.x)+40);
+                       (sarbazH+i)->positionDy=(double)(((paigah+destination)->arm->position.y));
+                       (sarbazH+i)->dest=destination;
+                       (sarbazH+i)->kamkardan_az_maghsad=1;
+                       printf(" *dest=%d %d\n",(sarbazH+i)->dest,i);
+                       continue;
+             }
+             else
+             {
+                      printf("added dest\n");
                       //  printf("i1=%d\n",i);
                        (sarbazH+i)->positionArmDx=(double)((paigah+destination)->arm->position.x);
                        (sarbazH+i)->positionArmDy=(double)(((paigah+destination)->arm->position.y));
@@ -817,11 +859,13 @@
                        (sarbazH+i)->dest=destination;
                        (sarbazH+i)->kamkardan_az_maghsad=1;
                        //printf(" primierly (sarbazH+i)->positionDy=%f  (sarbazH+i)->positionDx=%f\n", (sarbazH+i)->positionDy,(sarbazH+i)->positionDx);
-
+                       printf("*dest=%d  %d\n",(sarbazH+i)->dest,i);
+             }
            }
-               *(tedad+ *head_tedad)=*(tedad+ *head_tedad-1)+((paigah+location)->sarbaz->tedadeshun);
+           printf("headsarbazruhava=%d\n",*head_sarbazRuHava);
+               *(tedad+ *head_tedad)=*(tedad+ *head_tedad-1)+((paigah+location)->sarbaz->tedadeshunCopy);
                ++ *head_tedad;
-                //printf(" \n*(tedad+ *head_tedad-1)=%d\n",*(tedad+ *head_tedad-1));
+               
        }
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////submit positions for paigah////////////////////////////////////////////////////
@@ -832,4 +876,4 @@
             
           //  printf("xpostion=%d yposition=%d \n",(paigah+i)->position.x=(position_paigah+i)->x,(paigah+i)->position.y=(position_paigah+i)->y);
         }
-        (armsT);
+      printf("second yes\n");
