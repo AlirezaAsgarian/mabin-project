@@ -27,6 +27,7 @@ if(iswindow == select_naghse+8)
 }
 else if(iswindow == bazi1+20)
 {
+  printf("*attack_number=%d\n",*attack_number);
   //printf("helloPc\n"); 
       if(xm>r11.x && xm<r11.x+34 && ym>r11.y && ym<r11.y+41)
         {
@@ -35,20 +36,24 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
-
+             
+              
                   location=0;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  printf("lets go\n");
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
+                   printf("location added\n");
             }
             else if(location != 0)
             {
               printf("moveforward\n");
-              add_destination(0,paigah);
+              add_destination(0,paigah,*(sarbazH+ *attack_number));
             //  printf("dy=%d d2%d\n",((paigah)->arm->position.y , (paigah+location)->arm->position.y));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah)->arm->position.y - (paigah+location)->arm->position.y),((paigah)->arm->position.x - (paigah+location)->arm->position.x));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
-              rendersoldiers(head_sarbazRuHava);
+              addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
+           //   rendersoldiers(head_sarbazRuHava,sarbazH);
               is_destination=0;
+              ++*attack_number;
             }
         } 
         else 
@@ -59,12 +64,15 @@ else if(iswindow == bazi1+20)
             {
               if(!is_move){
               printf("moveforward\n");
-              add_destination(0,paigah);
+              add_destination(0,paigah,*(sarbazH+ *attack_number));
             //  printf("dy=%d d2%d\n",((paigah)->arm->position.y , (paigah+location)->arm->position.y));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah)->arm->position.y - (paigah+location)->arm->position.y),((paigah)->arm->position.x - (paigah+location)->arm->position.x));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
-              rendersoldiers(head_sarbazRuHava);
-              is_destination=0;}
+              addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
+            //  rendersoldiers(head_sarbazRuHava,sarbazH);
+              is_destination=0;
+              ++*attack_number;
+              
+              }
               else
               {
                               printf("no\n");
@@ -80,19 +88,22 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
-
+            //  *(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+             //++*attack_number;
                   location=1;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
             }
             else if(location != 1) 
             {
               printf("moveforward\n");
-              add_destination(1,paigah);
+              add_destination(1,paigah,*(sarbazH+ *attack_number));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+1)->arm->position.y) - ((paigah+location)->arm->position.y),((paigah+1)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+            //   rendersoldiers(head_sarbazRuHava,sarbazH);
+            ++*attack_number;
+            
             }
         } 
         else 
@@ -103,11 +114,13 @@ else if(iswindow == bazi1+20)
             {
               if(!is_move){
               printf("moveforward\n");
-              add_destination(1,paigah);
+              add_destination(1,paigah,*(sarbazH+ *attack_number));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+1)->arm->position.y) - ((paigah+location)->arm->position.y),((paigah+1)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+             //  rendersoldiers(head_sarbazRuHava,sarbazH);
+             ++*attack_number;
+                
                }
             }
         }                 
@@ -120,19 +133,23 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
+          //     *(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+           //  ++*attack_number;
 
                   location=2;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
             }
             else if(location != 2)
             {
-              add_destination(2,paigah);
+              add_destination(2,paigah,*(sarbazH+ *attack_number));
               printf("moveforward\n");
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+2)->arm->position.y - (paigah+location)->arm->position.y),((paigah+2)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+             //  rendersoldiers(head_sarbazRuHava,sarbazH);
+             ++*attack_number;
+            
             }
         } 
         else 
@@ -142,12 +159,14 @@ else if(iswindow == bazi1+20)
             else 
             {
               if(!is_move){
-                add_destination(2,paigah);
+                add_destination(2,paigah,*(sarbazH+ *attack_number));
               printf("moveforward\n");
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+2)->arm->position.y - (paigah+location)->arm->position.y),((paigah+2)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+           //    rendersoldiers(head_sarbazRuHava,sarbazH);
+           ++*attack_number;
+           
                }
             }
         }                
@@ -162,19 +181,23 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
+          //     *(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+           //   ++*attack_number;
 
                   location=3;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
             }
             else if(location != 3)
             {
               printf("moveforward\n");
-              add_destination(3,paigah);
+              add_destination(3,paigah,*(sarbazH+ *attack_number));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+3)->arm->position.y - (paigah+location)->arm->position.y),((paigah+3)->arm->position.x - (paigah+location)->arm->position.x));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+              addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
               is_destination=0;
-              rendersoldiers(head_sarbazRuHava);
+          //    rendersoldiers(head_sarbazRuHava,sarbazH);
+          ++*attack_number;
+         
             }
         } 
         else 
@@ -185,11 +208,13 @@ else if(iswindow == bazi1+20)
             {
               if(!is_move){
               printf("moveforward\n");
-              add_destination(3,paigah);
+              add_destination(3,paigah,*(sarbazH+ *attack_number));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+3)->arm->position.y - (paigah+location)->arm->position.y),((paigah+3)->arm->position.x - (paigah+location)->arm->position.x));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+              addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
               is_destination=0;
-              rendersoldiers(head_sarbazRuHava);
+            //  rendersoldiers(head_sarbazRuHava,sarbazH);
+            ++*attack_number;
+           
               }
             }
         }                
@@ -202,19 +227,22 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
-
+           //    *(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+            //  ++*attack_number;
                   location=4;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
             }
             else if(location != 4) 
             {
               printf("moveforward\n");
-              add_destination(4,paigah);
-             // addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+4)->arm->position.y - (paigah+location)->arm->position.y),((paigah+4)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+              add_destination(4,paigah,*(sarbazH+ *attack_number));
+             //c addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+4)->arm->position.y - (paigah+location)->arm->position.y),((paigah+4)->arm->position.x - (paigah+location)->arm->position.x));
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+              // rendersoldiers(head_sarbazRuHava,sarbazH);
+              ++*attack_number;
+            
             }
         } 
         else 
@@ -225,11 +253,13 @@ else if(iswindow == bazi1+20)
             {
               if(!is_move){
               printf("moveforward\n");
-              add_destination(4,paigah);
+              add_destination(4,paigah,*(sarbazH+ *attack_number));
              // addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+4)->arm->position.y - (paigah+location)->arm->position.y),((paigah+4)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+             //  rendersoldiers(head_sarbazRuHava,sarbazH);
+             ++*attack_number;
+            
                }
             }
         }                
@@ -241,19 +271,23 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
+           //    *(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+           //   ++*attack_number;
 
                   location=5;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
             }
             else if(location != 5)
             {
                 printf("moveforward\n");
-                add_destination(5,paigah);
+                add_destination(5,paigah,*(sarbazH+ *attack_number));
              // addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+5)->arm->position.y - (paigah+location)->arm->position.y),((paigah+5)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+              // rendersoldiers(head_sarbazRuHava,sarbazH);
+              ++*attack_number;
+              
             }
         } 
         else 
@@ -264,12 +298,14 @@ else if(iswindow == bazi1+20)
             {
               if(!is_move){
                  printf("moveforward\n");
-                add_destination(5,paigah);
+                add_destination(5,paigah,*(sarbazH+ *attack_number));
              
              // addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+5)->arm->position.y - (paigah+location)->arm->position.y),((paigah+5)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+              // rendersoldiers(head_sarbazRuHava,sarbazH);
+              ++*attack_number;
+             
               }
             }
         }                
@@ -281,19 +317,22 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
-
+            //   *(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+            //   ++*attack_number;
                   location=6;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
             }
             else if(location != 6)
             {
               printf("moveforward\n");
-              add_destination(6,paigah);
+              add_destination(6,paigah,*(sarbazH+ *attack_number));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+6)->arm->position.y - (paigah+location)->arm->position.y),((paigah+6)->arm->position.x - (paigah+location)->arm->position.x));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+              addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+             //  rendersoldiers(head_sarbazRuHava,sarbazH);
+             ++*attack_number;
+            
             }
         } 
         else 
@@ -304,11 +343,13 @@ else if(iswindow == bazi1+20)
             {
               if(!is_move){
               printf("moveforward\n");
-              add_destination(6,paigah);
+              add_destination(6,paigah,*(sarbazH+ *attack_number));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+6)->arm->position.y - (paigah+location)->arm->position.y),((paigah+6)->arm->position.x - (paigah+location)->arm->position.x));
-              addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+               //rendersoldiers(head_sarbazRuHava,sarbazH);
+               //*(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+                ++*attack_number;
               }
             }
         }                
@@ -320,21 +361,23 @@ else if(iswindow == bazi1+20)
 
             if(is_destination == 0)
             {
-
+            //  *(sarbazH+ *attack_number)=(struct sarbazRuHava *)malloc(sizeof(struct sarbazRuHava));
+            //   ++*attack_number;
                   location=7;
                   is_destination=1;
-                  addlocation(location, paigah);
+                  addlocation(location, paigah,*(sarbazH+ *attack_number));
             }
             else if(location != 7) 
             {
                 printf("moveforward\n");
-              add_destination(7,paigah);
+              add_destination(7,paigah,*(sarbazH+ *attack_number));
               //printf("((paigah+7)->arm->position.y - (paigah+location)->arm->position.y)=%d ((paigah+7)->arm->position.x - (paigah+location)->arm->position.x=%d\n)) ",((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
-              
+              // rendersoldiers(head_sarbazRuHava,sarbazH);
+              ++*attack_number;
+             
             }
         } 
         else 
@@ -345,12 +388,14 @@ else if(iswindow == bazi1+20)
             {
               if(!is_move){
               printf("moveforward\n");
-              add_destination(7,paigah);
+              add_destination(7,paigah,*(sarbazH+ *attack_number));
               //printf("((paigah+7)->arm->position.y - (paigah+location)->arm->position.y)=%d ((paigah+7)->arm->position.x - (paigah+location)->arm->position.x=%d\n)) ",((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
               //addSarbazRuHava((paigah+location)->sarbaz->tedadeshun,((paigah+7)->arm->position.y - (paigah+location)->arm->position.y),((paigah+7)->arm->position.x - (paigah+location)->arm->position.x));
-               addSarbazRuHava((paigah+location)->sarbaz->tedadeshunCopy);
+               addSarbazRuHava((*(sarbazH+ *attack_number))->tedadeshun,*(sarbazH+ *attack_number));
                is_destination=0;
-               rendersoldiers(head_sarbazRuHava);
+              // rendersoldiers(head_sarbazRuHava,sarbazH);
+              ++*attack_number;
+          
               }
             }
         }                

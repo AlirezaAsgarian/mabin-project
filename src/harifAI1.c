@@ -125,10 +125,10 @@ int flag=0;
                
                 if((paigah+*(satle_queue+ k))->sarbaz->tedadeshun >= temp_tedad_sarbaz){
                   flag=1;printf("k=%d *(satle_queue+ k)=%d index=%d\n",k,*(satle_queue+ k),index);
-                    addlocation(*(satle_queue+ k), paigah);
-                    add_destination(*(head_copy),paigah);
-                    addSarbazRuHava((paigah+*(satle_queue+ k))->sarbaz->tedadeshunCopy);
-                   rendersoldiers(head_sarbazRuHava);
+                    addlocation(*(satle_queue+ k), paigah,*(sarbazH_Harif+ *attack_number_Harif));
+                    add_destination(*(head_copy),paigah,*(sarbazH_Harif+ *attack_number_Harif));
+                    addSarbazRuHava((*(sarbazH_Harif+ *attack_number_Harif))->tedadeshun,*(sarbazH_Harif+ *attack_number_Harif));
+                    ++*attack_number_Harif;
                   break;}
                 else{temp_tedad_sarbaz-= (paigah+*(satle_queue+ k))->sarbaz->tedadeshun;}
                ++k;
@@ -178,5 +178,13 @@ if(counter_Time % 5000 == 0)
 cheking_next_door(queue);
 free(queue); free(head_satle_queue); free(satle_queue); free(visited);
 }
+
+/*if(head_sarbazRuHava1 != 0){ printf("hello\n");rendersoldiers(head_sarbazRuHava1,sarbazH1);
+                            continuetomove(head_sarbazRuHava1,sarbazH1);}*/
+      for(int i=0;i<*attack_number_Harif;++i)
+      {
+        rendersoldiers((head_sarbazRuHava_Harif+i),*(sarbazH_Harif+i));
+        continuetomove((head_sarbazRuHava_Harif+i),*(sarbazH_Harif+i),i,sarbazH_Harif,attack_number_Harif);
+      }
 
 SDL_RenderPresent(renderer1);

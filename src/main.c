@@ -106,7 +106,7 @@ int iswindow= select_naghse+8;
         else if(iswindow == bazi1+20)
         {
           #include</home/alireza/state.io/src/bazi1.c>
-          #include</home/alireza/state.io/src/harifAI1.c>
+         #include</home/alireza/state.io/src/harifAI1.c>
         }
         else if(iswindow == bazi2+20)
         {
