@@ -3,11 +3,11 @@
        
                    SDL_RenderClear(renderer1);
 
-       
-       
+             
+       SDL_RenderCopy(renderer1,backgroundT,NULL,NULL);
        if(isset)
        {
-        
+ 
         printf("bazi started\n");
         TTF_Font *font = TTF_OpenFont("/home/alireza/state.io/src/LiberationSerif-Bold.ttf",20);
         if(font == NULL){printf("%s\n",SDL_GetError());}
@@ -25,6 +25,7 @@
 
         }
        printf("hello\n");
+       tedadeharif=3;
        if(tedadeharif == 1)
        {
         
@@ -36,7 +37,7 @@
            int *randd=(int *)malloc(sizeof(int));
            *randd=rand()%3; if(*randd == 1){(paigah)->user=1;} else if(*(randd)== 2){(paigah+1)->user=1;} else{(paigah+3)->user=1;} free(randd);
            int *rand1=(int *)malloc(sizeof(int));
-           *rand1=rand()%3; if(*rand1 == 1){(paigah+5)->user=2;} else{(paigah+7)->user=2;} free(rand1);
+           *rand1=rand()%3;  if(*rand1 == 1){(paigah+5)->user=2;} else{(paigah+7)->user=2;} free(rand1);
         for(int i=0;i<8;++i)
         {
                (paigah+i)->arm->armt=(SDL_Texture *)malloc(sizeof(SDL_Texture*));
@@ -68,7 +69,7 @@
                else{(paigah+i)->arm->armt= *(armsT+3);}
                
         }
-       // printf("hello");
+        printf("hello2");
         
         
         }
@@ -114,6 +115,7 @@
         ////////////////////////////////////////////////////////////////////////////////////
        
        TTF_CloseFont(font);
+       printf("is set finished\n");
        }
 
         //////////////////tedade harifan//////////////////////////////////////////////////// 
@@ -159,24 +161,14 @@
 
 
        
-        
-        /*int ratio=13;
-        int ratio1=4;
-        int biajolo=229;
-        int biabala=30;*/
-     
-
-       // minussoldier(((paigah+2)),4,renderer1);
-         //printf("hello\n"); 
-        
+    
         
         
         int rand_arm=rand()%3+1;
         if((paigah+2)->sarbaz->tedad == NULL){printf("%d\n",5555);}
-       //render copies
-      // printf("paigah->user=%d\n",paigah->user);
-     //  printf("render paigaz\n");
-        switch (paigah->user)
+      
+        checkarms(paigah,8);  
+         switch (paigah->user)
         {
         case 0: 
         paigah-> color = *(imagess);
@@ -187,7 +179,6 @@
         case 1: 
         paigah-> color = *(imagess+27);
         paigah -> position =t11; 
-      //  SDL_RenderCopy(renderer1,paigah-> color,NULL,&(paigah->position));
         SDL_RenderCopy(renderer1,paigah-> color,NULL,&(paigah->position));
         SDL_RenderCopy(renderer1,paigah->arm->armt,NULL,&(paigah->arm->position));
         SDL_RenderCopy(renderer1,(paigah)->sarbaz->tedad,NULL,&(paigah->sarbaz->position));
@@ -305,7 +296,6 @@
         }
         switch ((paigah+4)->user)
         {
-        //if((paigah+4)->sarbaz->tedad == NULL){printf("i dont know anything\n");}
         case 0: 
         (paigah+4)-> color = *(imagess+4);
         (paigah+4) -> position =t15; 
@@ -428,7 +418,6 @@
         default:
                 break;
         }
-     //printf("render paigaz khoobe\n");
      if(counter_Time %30 == 0)
      {
      int *i=(int *)malloc(sizeof(int));
@@ -444,6 +433,8 @@
          }
          else 
          {
+                 if(users[(paigah+*i)->user][1]==0)
+                 {
                  
                  if((paigah+*i)->sarbaz->tedadeshun < 50)
                  {
@@ -458,24 +449,64 @@
                        addsoldier(((paigah+ *i)),2,renderer1);       
                     }
                  }
+                 }
+                 else 
+                 {
+                         addsoldier(((paigah+ *i)),2,renderer1);  
+                 }
                 ++ *i;
          }
       }
       free(i);
       }
+       int *flag=(int *)malloc(sizeof(int));
+       *flag=0;
+       for(int i=0;i<4;++i)
+       {
+               if(users[i][1]==4){*flag=1; break;}
+       } 
     
-   // printf("attacks \n");    
+      render_potion();   
+      
       for(int i=0;i<*attack_number;++i)
       {
-      //  printf("man useram man useram (*(sarbazH+i))->is_destroy=%d i=%d *attack_number=%d\n",(*(sarbazH+i))->is_destroy,i,*attack_number);
-        rendersoldiers((head_sarbazRuHava+i),*(sarbazH+i));
-        continuetomove((head_sarbazRuHava+i),*(sarbazH+i),i,sarbazH,attack_number,head_sarbazRuHava,paigah);   
+      if(*flag)
+      {
+         if(users[(*(sarbazH+i))->user][1] != 4)
+         {
+                 if((*(sarbazH+i))->is_kond)
+                 {
+                 rendersoldiers((head_sarbazRuHava+i),*(sarbazH+i));
+                 continuetomove((head_sarbazRuHava+i),*(sarbazH+i),i,sarbazH,attack_number,head_sarbazRuHava,paigah);
+                 (*(sarbazH+i))->is_kond=0;
+                 } 
+                 else{rendersoldiers_sabet((head_sarbazRuHava+i),*(sarbazH+i)); (*(sarbazH+i))->is_kond=1;}
+      }
+      else 
+      {
+               rendersoldiers((head_sarbazRuHava+i),*(sarbazH+i));
+               continuetomove((head_sarbazRuHava+i),*(sarbazH+i),i,sarbazH,attack_number,head_sarbazRuHava,paigah);
+      }
+      }
+      else{
+      if(users[(*(sarbazH+i))->user][1] == 3){
+              for(int j=0;j<2;++j)
+              {
+               rendersoldiers((head_sarbazRuHava+i),*(sarbazH+i));
+               continuetomove((head_sarbazRuHava+i),*(sarbazH+i),i,sarbazH,attack_number,head_sarbazRuHava,paigah); 
+              }
+           }
+           else 
+           {
+               rendersoldiers((head_sarbazRuHava+i),*(sarbazH+i));
+               continuetomove((head_sarbazRuHava+i),*(sarbazH+i),i,sarbazH,attack_number,head_sarbazRuHava,paigah);     
+           }  
+      }
       }
        for(int i=0;i<*attack_number;++i)
        {
-
-        if((*(sarbazH+i))->is_destroy == 1){ kamkardaneSarbazH(i,attack_number,sarbazH, head_sarbazRuHava); --i;  }
+        
+        if((*(sarbazH+i))->is_destroy == 1){ kamkardaneSarbazH(i,attack_number,sarbazH, head_sarbazRuHava); --i;}
        
        }
        if(renderer1 == NULL){printf("%s",SDL_GetError());}
- //   SDL_RenderPresent(renderer1);

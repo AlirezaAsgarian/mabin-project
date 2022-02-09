@@ -10,11 +10,21 @@
 
 /home/alireza/state.io/src/bazi2.c
 
+/home/alireza/state.io/src/bazi2_AI.c
+
+/home/alireza/state.io/src/bazi3 AI.c
+
 /home/alireza/state.io/src/bazi3.c
+
+/home/alireza/state.io/src/bazi4 AI.c
 
 /home/alireza/state.io/src/bazi4.c
 
+/home/alireza/state.io/src/file_handling.c
+
 /home/alireza/state.io/src/harifAI1.c
+
+/home/alireza/state.io/src/jadval.c
 
 /home/alireza/state.io/src/main.c
 stdio.h
@@ -39,34 +49,44 @@ time.h
 -
 string.h
 -
+naghshe1.c
 /home/alireza/state.io/src/naghshe1.c
--
+mouse settings.c
 /home/alireza/state.io/src/mouse settings.c
--
-/home/alireza/state.io/src/naghshe11.c
--
+file_handling.c
+/home/alireza/state.io/src/file_handling.c
+menu.c
+/home/alireza/state.io/src/menu.c
+jadval.c
+/home/alireza/state.io/src/jadval.c
+bazi1.c
 /home/alireza/state.io/src/bazi1.c
--
+harifAI1.c
 /home/alireza/state.io/src/harifAI1.c
--
+bazi2.c
 /home/alireza/state.io/src/bazi2.c
--
+bazi2_AI.c
+/home/alireza/state.io/src/bazi2_AI.c
+bazi3.c
 /home/alireza/state.io/src/bazi3.c
--
+bazi3 AI.c
+/home/alireza/state.io/src/bazi3 AI.c
+bazi4.c
 /home/alireza/state.io/src/bazi4.c
--
+bazi4 AI.c
+/home/alireza/state.io/src/bazi4 AI.c
+select_naghse.c
 /home/alireza/state.io/src/select_naghse.c
--
+tasafof.c
 /home/alireza/state.io/src/tasafof.c
--
+tasadof_AI.c
 /home/alireza/state.io/src/tasadof_AI.c
--
+
+/home/alireza/state.io/src/menu.c
 
 /home/alireza/state.io/src/mouse settings.c
 
 /home/alireza/state.io/src/naghshe1.c
-
-/home/alireza/state.io/src/naghshe11.c
 
 /home/alireza/state.io/src/select_naghse.c
 

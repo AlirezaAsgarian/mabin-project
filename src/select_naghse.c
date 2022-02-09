@@ -10,25 +10,19 @@
     SDL_Surface *b2 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/b2.jpeg");
     SDL_Surface *b3 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/b3.jpeg");
     SDL_Surface *b4 = IMG_Load("/home/alireza/state.io/src/انتخاب نقشه/b4.jpeg");
+    SDL_Texture *b1T= SDL_CreateTextureFromSurface(renderer1,b1);
+    SDL_Texture *b2T= SDL_CreateTextureFromSurface(renderer1,b2);
+    SDL_Texture *b3T= SDL_CreateTextureFromSurface(renderer1,b3);
+    SDL_Texture *b4T= SDL_CreateTextureFromSurface(renderer1,b4);
+    SDL_Texture *n1T= SDL_CreateTextureFromSurface(renderer1,n1);
+    SDL_Texture *n2T= SDL_CreateTextureFromSurface(renderer1,n2);
+    SDL_Texture *n3T= SDL_CreateTextureFromSurface(renderer1,n3);
+    SDL_Texture *n4T= SDL_CreateTextureFromSurface(renderer1,n4);
+
     SDL_Surface *naghshe=(SDL_Surface*)malloc(sizeof(SDL_Surface)*4);
     SDL_Surface *bu=(SDL_Surface*)malloc(sizeof(SDL_Surface)*4);
-    *(naghshe)=*n1; *(naghshe+1)=*n2; *(naghshe+2)=*n3; *(naghshe+3)=*n4;
-   //printf("heeeeeeeeeeeeeeeeeeeeeeaaaaaaaay\n");
-    *(bu)=*b1; (*(bu+1))=*b2;  (*(bu+2))=*b3; (*(bu+3))=*b4;
-    SDL_Texture **whichn =(SDL_Texture **)malloc(4*sizeof(SDL_Texture*));
-     for(int i=0;i<4;++i)
-     {
-             *(whichn+i) = (SDL_Texture *)malloc(sizeof(SDL_Texture*));
-             *(whichn+i)= SDL_CreateTextureFromSurface(renderer1,&naghshe[i]);
-             if(*(whichn+i) == NULL){printf("can't %s",SDL_GetError());}
-     }
-     SDL_Texture **buT =(SDL_Texture **)malloc(4*sizeof(SDL_Texture*));
-     for(int i=0;i<4;++i)
-     {
-             *(buT+i) = (SDL_Texture *)malloc(sizeof(SDL_Texture*));
-             *(buT+i)= SDL_CreateTextureFromSurface(renderer1,(bu+i));
-             if((bu+i) == NULL){printf("can't %s",SDL_GetError());}
-     }
+    
+   
         SDL_FreeSurface(n1);
         SDL_FreeSurface(n2);
         SDL_FreeSurface(n3);
@@ -50,25 +44,24 @@
 
            
           
-        printf("x=%d y=%d\n",xm,ym);
 
         if(xm>211 && xm<258 && ym>264 && ym<310)
         {
                    
-          SDL_RenderCopy(renderer1,*(whichn),NULL,&dis1);
+          SDL_RenderCopy(renderer1,n1T,NULL,&dis1);
 
            
         } 
         else if(xm>499 && xm<546 && ym>200 && ym<268)
         {
-            SDL_RenderCopy(renderer1,*(whichn+1),NULL,&dis1);
+            SDL_RenderCopy(renderer1,n2T,NULL,&dis1);
 
         }              
         else if(xm>852 && xm<902 && ym>288 && ym<338)
         {
 
 
-        SDL_RenderCopy(renderer1,*(whichn+2),NULL,&dis1);
+        SDL_RenderCopy(renderer1,n3T,NULL,&dis1);
 
 
 
@@ -76,26 +69,19 @@
           else if(xm>541 && xm<591 && ym>431 && ym<481)
           {
 
-           SDL_RenderCopy(renderer1,*(whichn+3),NULL,&dis1);
+           SDL_RenderCopy(renderer1,n4T,NULL,&dis1);
 
           }
           else 
           {
-          // SDL_Texture *defaultT = SDL_CreateTextureFromSurface(renderer1,image);
             SDL_RenderCopy(renderer1,tex,NULL,&dis1);
           }
-           SDL_RenderCopy(renderer1,*(buT),NULL,&b1r);
-           SDL_RenderCopy(renderer1,*(buT+1),NULL,&b2r);
-           SDL_RenderCopy(renderer1,*(buT+2),NULL,&b3r);
-           SDL_RenderCopy(renderer1,*(buT+3),NULL,&b4r);
-           
+           SDL_RenderCopy(renderer1,b1T,NULL,&b1r);
+           SDL_RenderCopy(renderer1,b2T,NULL,&b2r);
+           SDL_RenderCopy(renderer1,b3T,NULL,&b3r);
+           SDL_RenderCopy(renderer1,b4T,NULL,&b4r);
+           SDL_RenderCopy(renderer1,random_buttonT,NULL,&random_button_p);
           SDL_RenderPresent(renderer1);
-        printf("hello\n");
-        for(int i=0;i<4;++i)
-       {
-    SDL_DestroyTexture(*(buT+i));
-    SDL_DestroyTexture(*(whichn+i));
-        }
+     
     
     SDL_RenderPresent(renderer1);
-     printf("yes\n");

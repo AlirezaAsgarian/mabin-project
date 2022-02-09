@@ -341,9 +341,9 @@ hamle_be_makane_khali();
 }
 else if(counter_Time % 5000 == 0  && !(user_team->is_attack))
 {
-  printf("yes\n");
+ // printf("yes\n");
 cheking_next_door(queue);
- printf("yes2\n");
+ //printf("yes2\n");
 free(queue); free(head_satle_queue); free(satle_queue); free(visited);
 }
 }
